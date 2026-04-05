@@ -1,0 +1,79 @@
+.shapegrid-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  pointer-events: none;
+}
+
+.shape-grid {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.shape-grid-canvas {
+  display: grid;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-content: center;
+}
+
+.shape-grid-cell {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.shape-grid-shape {
+  width: 100%;
+  height: 100%;
+  border: 1px solid var(--shape-border, rgba(255, 255, 255, 0.2));
+  background: transparent;
+  opacity: 0.9;
+  transition:
+    background-color var(--shape-speed, 260ms) ease,
+    border-color var(--shape-speed, 260ms) ease,
+    transform var(--shape-speed, 260ms) ease,
+    opacity var(--shape-speed, 260ms) ease;
+}
+
+.shape-grid-shape.is-circle {
+  border-radius: 999px;
+}
+
+.shape-grid-shape.is-hexagon {
+  clip-path: polygon(25% 6%, 75% 6%, 100% 50%, 75% 94%, 25% 94%, 0% 50%);
+}
+
+.shape-grid-shape.is-triangle {
+  clip-path: polygon(50% 6%, 96% 94%, 4% 94%);
+}
+
+.shape-grid-shape.dir-up {
+  transform: translateY(10px);
+}
+
+.shape-grid-shape.dir-down {
+  transform: translateY(-10px);
+}
+
+.shape-grid-shape.dir-left {
+  transform: translateX(10px);
+}
+
+.shape-grid-shape.dir-right {
+  transform: translateX(-10px);
+}
+
+.shape-grid-shape.dir-diagonal {
+  transform: translate(-8px, -8px);
+}
+
+.shape-grid-shape.is-active {
+  transform: translate(0, 0);
+}
