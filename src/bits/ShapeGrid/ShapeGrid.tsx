@@ -1034,12 +1034,12 @@ function RevealShapeGrid({
                         : borderColor,
                     "--shape-speed": transitionMs,
                     backgroundColor: isTextCell
-                      ? withAlpha(resolvedTextColor, 0.72)
+                      ? withAlpha(resolvedTextColor, 0.62)
                       : isActive
                         ? withAlpha(activeColor, alpha)
                         : "transparent",
                     boxShadow: isTextCell
-                      ? `0 0 20px ${withAlpha(resolvedTextColor, 0.28)}`
+                      ? `0 0 16px ${withAlpha(resolvedTextColor, 0.14)}`
                       : "none",
                     opacity: isTextCell ? 0.98 : isActive ? 1 : 0.7,
                   } as CSSProperties

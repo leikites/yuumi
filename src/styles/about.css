@@ -1,7 +1,7 @@
 .about-section {
   --about-bg: #0a0a0f;
-  --about-accent: #e84cff;
-  --about-accent-soft: rgba(232, 76, 255, 0.24);
+  --about-accent: var(--site-accent, #ff39c9);
+  --about-accent-soft: rgba(255, 57, 201, 0.24);
   --about-divider: rgba(255, 255, 255, 0.14);
   --about-grid-small: rgba(255, 255, 255, 0.04);
   --about-grid-large: rgba(255, 255, 255, 0.07);
@@ -22,12 +22,12 @@
 
 .about-site-grid,
 .about-geometry-accent {
-  position: fixed;
-  inset: 0;
+  position: absolute;
   pointer-events: none;
 }
 
 .about-site-grid {
+  inset: 0;
   z-index: 0;
   background-image:
     linear-gradient(var(--about-grid-small) 1px, transparent 1px),
