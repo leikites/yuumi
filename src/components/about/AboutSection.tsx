@@ -229,15 +229,20 @@ function AboutSection() {
                     </h2>
 
                     <blockquote className="about-hero-quote">
-                      Though this system be madness, yet there is method in my craft.
+                      Architecting the Intuitive. Defining the Experience.
                     </blockquote>
                   </div>
 
                   <div className="about-hero-body">
                     <div className="intro-text-col">
                       <p className="intro-text intro-text-display">
-                        Bridging complex system architectures, business strategy, and UI/UX
-                        design to scale multi-tenant SaaS and platform products from 0 to 1.
+                        {/* Bridging complex system architectures, business strategy, and UI/UX
+                        design to scale multi-tenant SaaS and platform products from 0 to 1. */}
+                        An experience-first Product Manager specializing in SaaS. I blend design 
+                        thinking with my robust Computer Science foundation to architect products 
+                        that solve real problems. Specializing in scaling multi-tenant platforms 
+                        from 0 to 1, I drive business growth by transforming complex functional 
+                        requirements into delightful, data-informed user experiences.
                       </p>
                     </div>
 
@@ -247,12 +252,12 @@ function AboutSection() {
                         <div className="stat-label stat-label-wide">YEARS EXPERIENCE</div>
                       </div>
                       <div className="stat-box stat-box-vertical">
-                        <div className="stat-number stat-number-light">10+</div>
-                        <div className="stat-label stat-label-wide">PROJECTS DELIVERED</div>
+                        <div className="stat-number stat-number-light">90%+</div>
+                        <div className="stat-label stat-label-wide">ON-TIME DELIVERY</div>
                       </div>
                       <div className="stat-box stat-box-vertical">
-                        <div className="stat-number stat-number-light">3+</div>
-                        <div className="stat-label stat-label-wide">TEAMS LED</div>
+                        <div className="stat-number stat-number-light">0 to 1</div>
+                        <div className="stat-label stat-label-wide">PRODUCT EXPERT</div>
                       </div>
                     </div>
                   </div>
@@ -360,6 +365,12 @@ function AboutSection() {
             </div>
           </div>
         </Container>
+
+        {/* 页码装饰 */}
+        <div className="about-number-wrapper">
+          <span className="about-number">02</span>
+          <div className="about-number-line"></div>
+        </div>
       </div>
     </section>
   );

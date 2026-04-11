@@ -4,6 +4,7 @@
   display: grid;
   place-items: center;
   min-height: 100vh;
+  padding-top: 120px; /* 为固定定位的Header留出空间 */
   overflow: hidden;
   background: #000;
 }

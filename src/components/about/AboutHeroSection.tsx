@@ -20,10 +20,9 @@ function AboutHeroSection() {
         <div className="about-hero-copy-frame">
           <div className="about-hero-copy-main anim-el anim-delay-2">
             <h2 className="about-hero-slogan">
-              From <span>shadowed</span>
+              Bridging theGap Between Complex Code
               <br />
-              thought to living form,
-              <br />I lead ideas into being.
+              and Business Value.
             </h2>
           </div>
 
