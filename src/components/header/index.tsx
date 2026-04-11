@@ -7,27 +7,17 @@ function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const handleNavClick = (event: MouseEvent<HTMLAnchorElement>, href: string) => {
-    const target = document.querySelector<HTMLElement>(href);
-    if (!target) {
-      setIsMenuOpen(false);
-      return;
-    }
-
     event.preventDefault();
     setIsMenuOpen(false);
 
-    if (href === "#about") {
-      window.scrollTo({
-        top: target.getBoundingClientRect().top + window.scrollY,
-        behavior: "smooth",
+    // 平滑滚动到目标section
+    const targetElement = document.querySelector(href);
+    if (targetElement) {
+      targetElement.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
       });
-      return;
     }
-
-    window.scrollTo({
-      top: target.getBoundingClientRect().top + window.scrollY,
-      behavior: "smooth",
-    });
   };
 
   useEffect(() => {

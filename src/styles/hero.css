@@ -5,138 +5,385 @@
   place-items: center;
   min-height: 100vh;
   overflow: hidden;
-  background: transparent;
+  background: #000;
 }
 
-.hero-background {
+/* 右侧装饰文字 */
+.hero-side-text {
   position: absolute;
-  inset: 0;
-  z-index: 0;
-  background: transparent;
-  pointer-events: none;
-  transition:
-    opacity 320ms cubic-bezier(0.16, 1, 0.3, 1),
-    transform 320ms cubic-bezier(0.16, 1, 0.3, 1);
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
 }
 
-.hero-background-flow {
-  opacity: 1;
-  transform: scale(1);
+.hero-side-item {
+  font-size: clamp(0.65rem, 1.2vw, 0.85rem);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.3);
+  font-weight: 500;
 }
 
-.hero-background-flow.is-hidden {
-  opacity: 0;
-  transform: scale(1.01);
+.hero-side-divider {
+  font-size: 1.2rem;
+  color: rgba(255, 255, 255, 0.3);
+  writing-mode: horizontal-tb;
 }
 
-.hero-background-reveal {
-  opacity: 0;
-}
-
-.hero-background-reveal.is-visible {
-  opacity: 1;
-}
-
+/* 主容器 */
 .hero-title-zone {
   position: absolute;
   inset: 0;
   z-index: 2;
   display: grid;
-  place-items: center;
-  padding: 0 24px;
+  grid-template-rows: 1fr auto;
+  grid-template-columns: 1fr;
+  justify-items: center;
+  padding: 80px 40px;
+  width: 100%;
+  height: 100%;
 }
 
-.hero-title-button {
-  position: relative;
-  display: inline-grid;
-  place-items: center;
-  width: fit-content;
-  max-width: 100%;
-  min-height: clamp(180px, 28vw, 320px);
-  padding: 0;
-  color: inherit;
+.hero-content {
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
-.hero-title-stack {
-  position: relative;
-  display: grid;
-  place-items: center;
-}
-
-.hero-title {
-  display: block;
-  margin: 0;
-  font-family: "Rammetto One", "Inter", "SF Pro Display", "Segoe UI", sans-serif;
-  font-size: clamp(4.6rem, 13vw, 9.8rem);
-  line-height: 0.92;
-  letter-spacing: -0.05em;
+/* 顶部标签 */
+.hero-label {
+  font-size: clamp(0.7rem, 1.8vw, 0.95rem);
+  letter-spacing: 0.2em;
   text-transform: uppercase;
-  transition:
-    opacity 320ms cubic-bezier(0.16, 1, 0.3, 1),
-    transform 420ms cubic-bezier(0.16, 1, 0.3, 1),
-    filter 320ms ease,
-    color 320ms ease;
+  color: #F9B2BD;
+  margin-bottom: 24px;
+  font-weight: 600;
 }
 
+/* 可切换的标题容器 */
 .hero-title-primary {
-  color: #f7f5ff;
-  -webkit-text-stroke: 2px rgba(255, 255, 255, 0.96);
-  paint-order: stroke fill;
+  display: block;
+  margin: 0 0 20px 0;
+  font-family: "Rammetto One", system-ui, -apple-system, sans-serif;
+  font-size: clamp(3.5rem, 12vw, 8rem);
+  line-height: 1;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+  color: #ffffff;
+  font-weight: 900;
   text-shadow:
-    0 0 12px rgba(255, 255, 255, 0.16),
-    0 0 44px rgba(174, 25, 127, 0.1);
+    0 0 20px rgba(255, 255, 255, 0.1);
 }
 
 .hero-title-dot {
-  color: #ffb2be;
-  -webkit-text-stroke: 0;
+  color: #F9B2BD;
+  font-weight: 900;
   text-shadow:
-    0 0 10px rgba(255, 178, 190, 0.92),
-    0 0 22px rgba(255, 178, 190, 0.68),
-    0 0 40px rgba(255, 178, 190, 0.42);
+    0 0 10px rgba(249, 178, 189, 1),
+    0 0 20px rgba(249, 178, 189, 0.8),
+    0 0 30px rgba(249, 178, 189, 0.6),
+    0 0 40px rgba(249, 178, 189, 0.4);
+  animation: glow-pulse 2s ease-in-out infinite;
 }
 
-.hero-title-secondary {
+@keyframes glow-pulse {
+  0%, 100% {
+    text-shadow:
+      0 0 10px rgba(249, 178, 189, 1),
+      0 0 20px rgba(249, 178, 189, 0.8),
+      0 0 30px rgba(249, 178, 189, 0.6),
+      0 0 40px rgba(249, 178, 189, 0.4);
+  }
+  50% {
+    text-shadow:
+      0 0 15px rgba(249, 178, 189, 1),
+      0 0 25px rgba(249, 178, 189, 0.9),
+      0 0 35px rgba(249, 178, 189, 0.7),
+      0 0 50px rgba(249, 178, 189, 0.5);
+  }
+}
+
+/* 副标题 */
+.hero-subtitle {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: clamp(0.9rem, 2.2vw, 1.25rem);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 28px;
+  font-weight: 500;
+}
+
+.hero-subtitle-accent {
+  color: #F9B2BD;
+  font-weight: 700;
+}
+
+/* 引言文字 */
+.hero-quote {
+  font-size: clamp(0.95rem, 2vw, 1.15rem);
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.65);
+  font-style: italic;
+  max-width: 520px;
+  margin: 0 0 32px 0;
+  font-weight: 400;
+}
+
+.hero-quote-highlight {
+  color: #F9B2BD;
+  font-weight: 600;
+}
+
+/* 底部区域 */
+.hero-footer {
+  position: static;
+  bottom: auto;
+  left: auto;
+  right: auto;
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  align-items: flex-end;
+  gap: 60px;
+  z-index: 3;
+}
+
+/* CTA 按钮包装器 */
+.hero-cta-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.hero-cta-button {
+  display: inline-block;
+  padding: 14px 32px;
+  border: 2px solid #F9B2BD;
+  background-color: #F9B2BD;
+  color: #000;
+  font-size: clamp(0.8rem, 1.4vw, 0.95rem);
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 320ms cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  z-index: 2;
+}
+
+.hero-cta-button:hover {
+  background-color: transparent;
+  color: #F9B2BD;
+  transform: translateY(-4px);
+  box-shadow: 0 12px 28px rgba(249, 178, 189, 0.2);
+}
+
+/* 偏移边框效果 */
+.hero-cta-border {
   position: absolute;
-  inset: 50% auto auto 50%;
-  color: rgba(255, 178, 190, 0.96);
-  font-size: clamp(2rem, 5.8vw, 4.8rem);
-  line-height: 1;
-  white-space: nowrap;
-  text-shadow:
-    0 0 18px rgba(255, 178, 190, 0.34),
-    0 0 48px rgba(255, 178, 190, 0.16);
-  opacity: 0;
-  filter: blur(10px);
-  transform: translate(-50%, calc(-50% + 22px)) scale(0.96);
+  bottom: -8px;
+  left: 8px;
+  right: 0;
+  height: 2px;
+  border: 2px solid #F9B2BD;
+  border-top: none;
+  border-left: none;
+  background: transparent;
+  pointer-events: none;
 }
 
-.hero-title-button.is-locked .hero-title-primary {
-  opacity: 0;
-  filter: blur(10px);
-  transform: translateY(-18px) scale(1.02);
+/* 地点信息 */
+.hero-info {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-left: auto;
 }
 
-.hero-title-button.is-locked .hero-title-secondary {
-  opacity: 1;
-  filter: blur(0);
-  transform: translate(-50%, -50%) scale(1);
-  transition-delay: 180ms;
+.hero-info span {
+  font-size: clamp(0.7rem, 1.3vw, 0.85rem);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.4);
+  font-weight: 500;
 }
 
-@media (max-width: 1280px) {
-  .hero-title {
-    font-size: clamp(3.8rem, 11vw, 8rem);
+/* 页码装饰 */
+.hero-number-wrapper {
+  position: absolute;
+  right: 40px;
+  bottom: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.hero-number {
+  font-size: clamp(2.5rem, 7vw, 4rem);
+  font-weight: 300;
+  letter-spacing: 0.15em;
+  color: rgba(255, 255, 255, 0.15);
+  font-family: "Inter", system-ui, -apple-system, sans-serif;
+  text-align: center;
+}
+
+.hero-number-line {
+  width: 3px;
+  height: 40px;
+  background: linear-gradient(to bottom, #F9B2BD, rgba(249, 178, 189, 0.1));
+  border-radius: 2px;
+}
+
+/* 响应式布局 */
+@media (max-width: 1024px) {
+  .hero-title-zone {
+    padding: 60px 32px;
+  }
+
+  .hero-cta-wrapper,
+  .hero-footer {
+    gap: 40px;
+  }
+
+  .hero-side-text {
+    right: 12px;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-title-zone {
+    padding: 40px 24px;
+  }
+
+  .hero-content {
+    max-width: 100%;
+  }
+
+  .hero-footer {
+    max-width: 100%;
+  }
+
+  .hero-label {
+    margin-bottom: 16px;
+  }
+
+  .hero-title-primary {
+    margin-bottom: 16px;
+  }
+
+  .hero-subtitle {
+    margin-bottom: 20px;
+  }
+
+  .hero-quote {
+    max-width: 100%;
+    margin-bottom: 24px;
+  }
+
+  .hero-footer {
+    flex-direction: column;
+    gap: 24px;
+    align-items: flex-start;
+  }
+
+  .hero-info {
+    margin-left: 0;
+  }
+
+  .hero-number-wrapper {
+    right: 24px;
+    bottom: 24px;
+  }
+
+  .hero-side-text {
+    opacity: 0;
+    pointer-events: none;
   }
 }
 
 @media (max-width: 640px) {
-  .hero-title {
-    font-size: clamp(3rem, 16vw, 5.6rem);
-    -webkit-text-stroke: 1.4px rgba(255, 255, 255, 0.96);
+  .hero-title-zone {
+    padding: 24px 16px;
   }
 
-  .hero-title-secondary {
-    font-size: clamp(1.5rem, 8vw, 3.2rem);
+  .hero-label {
+    font-size: 0.7rem;
+    margin-bottom: 12px;
+  }
+
+  .hero-title-primary {
+    font-size: clamp(2.5rem, 10vw, 4rem);
+    margin-bottom: 12px;
+  }
+
+  .hero-subtitle {
+    font-size: clamp(0.75rem, 2vw, 0.95rem);
+    margin-bottom: 16px;
+  }
+
+  .hero-quote {
+    font-size: clamp(0.85rem, 1.8vw, 1rem);
+    margin-bottom: 20px;
+  }
+
+  .hero-footer {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .hero-cta-button {
+    padding: 10px 24px;
+    font-size: 0.75rem;
+  }
+
+  .hero-cta-border {
+    bottom: -6px;
+    left: 6px;
+  }
+
+  .hero-info span {
+    font-size: 0.65rem;
+  }
+
+  .hero-number {
+    font-size: clamp(2rem, 5vw, 2.5rem);
+  }
+
+  .hero-number-line {
+    height: 32px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-title-zone {
+    padding: 20px 12px;
+  }
+
+  .hero-title-primary {
+    font-size: clamp(2rem, 9vw, 3.5rem);
+  }
+
+  .hero-cta-button {
+    padding: 8px 20px;
+    font-size: 0.7rem;
+  }
+
+  .hero-number {
+    font-size: clamp(1.5rem, 4vw, 2rem);
   }
 }

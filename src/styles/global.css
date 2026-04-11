@@ -34,6 +34,11 @@ section {
   padding: var(--space-32) 0;
 }
 
+section {
+  position: relative;
+  padding: var(--space-32) 0;
+}
+
 .section-title {
   margin-bottom: var(--space-6);
   color: var(--text-primary);
