@@ -9,7 +9,7 @@ function HeroSection() {
   const [isLocked, setIsLocked] = useState(false);
 
   return (
-    <section className="hero-section" id="home" ref={sectionRef}>
+    <section className="hero-section" id="hero" ref={sectionRef}>
       <div
         className={`hero-background hero-background-flow${isLocked ? " is-hidden" : ""}`}
         aria-hidden="true"
