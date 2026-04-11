@@ -5,7 +5,7 @@
   place-items: center;
   min-height: 100vh;
   overflow: hidden;
-  background: rgba(8, 6, 15, 0.92);
+  background: transparent;
 }
 
 .hero-background {
@@ -88,24 +88,24 @@
 }
 
 .hero-title-dot {
-  color: var(--accent-pink);
+  color: #ffb2be;
   -webkit-text-stroke: 0;
   text-shadow:
-    0 0 10px rgba(255, 57, 201, 0.92),
-    0 0 22px rgba(255, 57, 201, 0.68),
-    0 0 40px rgba(255, 57, 201, 0.42);
+    0 0 10px rgba(255, 178, 190, 0.92),
+    0 0 22px rgba(255, 178, 190, 0.68),
+    0 0 40px rgba(255, 178, 190, 0.42);
 }
 
 .hero-title-secondary {
   position: absolute;
   inset: 50% auto auto 50%;
-  color: rgba(255, 57, 201, 0.96);
+  color: rgba(255, 178, 190, 0.96);
   font-size: clamp(2rem, 5.8vw, 4.8rem);
   line-height: 1;
   white-space: nowrap;
   text-shadow:
-    0 0 18px rgba(255, 57, 201, 0.34),
-    0 0 48px rgba(255, 57, 201, 0.16);
+    0 0 18px rgba(255, 178, 190, 0.34),
+    0 0 48px rgba(255, 178, 190, 0.16);
   opacity: 0;
   filter: blur(10px);
   transform: translate(-50%, calc(-50% + 22px)) scale(0.96);

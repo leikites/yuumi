@@ -1,6 +1,6 @@
 #skills {
   padding: var(--space-4xl) 0;
-  background: var(--bg-dark);
+  background: transparent;
 }
 
 .skills-title {

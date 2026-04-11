@@ -1,7 +1,7 @@
 :root {
   --header-height: 110px;
-  --bg-black: #0a0a0f;
-  --bg-dark: #0f0f14;
+  --bg-black: #09060d;
+  --bg-dark: #09060d;
   --bg-surface: rgba(255, 255, 255, 0.03);
   --bg-card: rgba(255, 255, 255, 0.02);
   --accent-pink: #ff0080;

@@ -1,10 +1,34 @@
 import { useEffect, useState } from "react";
+import type { MouseEvent } from "react";
 
 import { navItems, siteMeta } from "../../data/site";
 
 function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
+
+  const handleNavClick = (event: MouseEvent<HTMLAnchorElement>, href: string) => {
+    const target = document.querySelector<HTMLElement>(href);
+    if (!target) {
+      setIsMenuOpen(false);
+      return;
+    }
+
+    event.preventDefault();
+    setIsMenuOpen(false);
+
+    if (href === "#about") {
+      window.scrollTo({
+        top: target.getBoundingClientRect().top + window.scrollY,
+        behavior: "smooth",
+      });
+      return;
+    }
+
+    window.scrollTo({
+      top: target.getBoundingClientRect().top + window.scrollY,
+      behavior: "smooth",
+    });
+  };
 
   useEffect(() => {
     const handleResize = () => {
@@ -19,30 +43,16 @@ function Header() {
       window.removeEventListener("resize", handleResize);
     };
   }, []);
-
-  useEffect(() => {
-    const updateHeaderState = () => {
-      setIsScrolled(window.scrollY > 100);
-    };
-
-    updateHeaderState();
-    window.addEventListener("scroll", updateHeaderState, { passive: true });
-
-    return () => {
-      window.removeEventListener("scroll", updateHeaderState);
-    };
-  }, []);
-
   return (
-    <header className={`site-header${isScrolled ? " is-scrolled" : ""}`}>
+    <header className="site-header">
       <div className="container">
         <div className="site-header-shell">
           <div className="site-header-glow" aria-hidden="true" />
 
           <a className="site-brand" href="#hero">
             <span className="site-brand-text">
-              {siteMeta.name.toUpperCase()}
-              <span className="brand-dot">.</span>
+              <span className="site-brand-word">{siteMeta.name.toUpperCase()}</span>
+              <span className="brand-dot" aria-hidden="true" />
             </span>
           </a>
 
@@ -65,7 +75,11 @@ function Header() {
             aria-label="Home sections"
           >
             {navItems.map((item) => (
-              <a key={item.href} href={item.href} onClick={() => setIsMenuOpen(false)}>
+              <a
+                key={item.href}
+                href={item.href}
+                onClick={(event) => handleNavClick(event, item.href)}
+              >
                 {item.label}
               </a>
             ))}

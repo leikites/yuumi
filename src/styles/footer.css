@@ -1,6 +1,6 @@
 #footer {
   padding: var(--space-3xl) 0 var(--space-lg);
-  background: var(--bg-dark);
+  background: transparent;
   border-top: 1px solid var(--border-color);
 }
 
