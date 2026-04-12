@@ -2,10 +2,31 @@ body {
   min-width: 320px;
   background-color: var(--bg-black);
   color: var(--text-primary);
-  font-family: var(--font-main);
+  font-family: var(--font-body);
   font-size: 16px;
   line-height: 1.6;
   overflow-x: hidden;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-headline);
+}
+
+.font-body {
+  font-family: var(--font-body);
+}
+
+.font-headline {
+  font-family: var(--font-headline);
+}
+
+.font-label {
+  font-family: var(--font-label);
 }
 
 #root,

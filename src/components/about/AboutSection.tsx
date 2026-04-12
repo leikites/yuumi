@@ -5,66 +5,84 @@ import "../../styles/about.css";
 
 const progressLabels = ["Intro", "Journey", "Strengths", "Skills", "Beyond"];
 
+const introText =
+  "I specialize in requirement analysis, product planning, and cross-functional delivery — connecting business goals, user needs, and technical feasibility to build products that scale.";
+
 const journeyItems = [
   {
     year: "2019",
-    title: "UI/UX Designer",
-    description: "Graduated from UWO. Began career designing interfaces for international clients.",
-    tags: ["UI/UX", "Design"],
+    label: "TECHNICAL GENESIS",
+    description:
+      "Leveraged a Computer Science background to bridge technical constraints and product vision. Focused on establishing rigorous analytical frameworks for scalable digital solutions.",
   },
   {
     year: "2021",
-    title: "Product Manager",
-    description: "Evolved from design to product strategy, leading e-commerce platforms.",
-    tags: ["Product", "Strategy"],
+    label: "PROCESS ARCHITECT",
+    description:
+      "Transitioned from features to integrated SaaS ecosystems. Focused on defining complex business logic and multi-role interaction models to optimize operational efficiency.",
   },
   {
     year: "2023",
-    title: "Team Leadership",
-    description: "Led team, built CPU EdTech generating 500K+ RMB revenue.",
-    tags: ["0-1", "Leadership"],
+    label: "STRATEGIC DELIVERY",
+    description:
+      "Led cross-functional teams from research to deployment. Established execution discipline and risk management to ensure high-impact commercial delivery.",
   },
   {
     year: "2025",
-    title: "B2B SaaS Lead",
-    description: "Leading UniBee Billing System with international teams.",
-    tags: ["B2B SaaS", "Cloud"],
-    active: true,
+    label: "SYSTEMIC SCALABILITY",
+    description:
+      "Leading cloud-native infrastructures and multi-tenant frameworks from 0 to 1. Specializing in high-concurrency logic and automated billing engines.",
   },
 ];
 
 const strengths = [
   {
-    icon: "💡",
-    title: "0-1 Product Builder",
-    description: "From CPU EdTech to UniBee Cloud, I turn product ideas into shipped systems.",
-  },
-  {
-    icon: "🌏",
-    title: "International Leader",
-    description: "Fluent English and cross-cultural team experience keep collaboration clear.",
-  },
-  {
-    icon: "🔧",
-    title: "Tech-Savvy PM",
+    icon: "strategy",
+    title: "Strategic Thinking",
     description:
-      "Computer Science background plus UI/UX practice helps me align engineering and design.",
+      "Aligning technical roadmaps with long-term business objectives and market positioning.",
+    span: 2,
+    tone: "base",
   },
   {
-    icon: "📊",
+    icon: "schema",
+    title: "System Architecture",
+    description:
+      "Defining scalable multi-tenant frameworks and complex backend logic for global SaaS.",
+    span: 1,
+    tone: "high",
+  },
+  {
+    icon: "terminal",
+    title: "Technical Depth",
+    description:
+      "CS-backed understanding of system constraints, API integration, and cloud deployment.",
+    span: 1,
+    tone: "high",
+  },
+  {
+    icon: "dynamic_form",
+    title: "Agile Leadership",
+    description:
+      "Orchestrating cross-functional teams to deliver mission-critical iterations with 90%+ on-time rates.",
+    span: 2,
+    tone: "base",
+  },
+  {
+    icon: "bar_chart",
     title: "Data-Driven",
     description:
-      "20% performance improvement through analytics, testing, and optimization thinking.",
+      "Decisions backed by rigorous metric analysis, conversion tracking, and performance auditing.",
+    span: 1,
+    tone: "base",
   },
   {
-    icon: "⚡",
-    title: "Agile Practitioner",
-    description: "90%+ on-time delivery through strong Scrum rhythm and planning discipline.",
-  },
-  {
-    icon: "🎯",
-    title: "Domain Versatility",
-    description: "SaaS, EdTech, e-commerce, healthcare, and auction products all shaped my range.",
+    icon: "trending_up",
+    title: "Growth Mindset",
+    description:
+      "Continuous evolution of craft, mastering emerging tech to solve complex industrial challenges.",
+    span: 2,
+    tone: "high",
   },
 ];
 
@@ -95,26 +113,30 @@ const skillCategories = [
   },
 ];
 
-const interests = [
+const beyondTiles = [
   {
-    icon: "🎭",
-    title: "Debate Champion",
-    description: "Led UWO Chinese Debate Club to 2nd place at Eastern Canada Championships",
+    title: "Photography",
+    imageSrc:
+      "https://lh3.googleusercontent.com/aida-public/AB6AXuAnCGlrTuGe6C-4aN0-ud9RzTr7xYg0QEvodJgxyyvtSH_HgZBqcMjogVIQjB2IgFXNC-N3D_rmX2gKcdm99YYwmJAJwvUeUBYzvyeYmKv1_Iklw2-oD1l0P70aZ2Cod5ZbHWm4kXX2SMAmJby1THP82odDa5GENXxfD6jAYp8CjTxQY2xfmK2rpKAnl2RVbibDv-Ns92xPIijoeynHPYaiqD4Dx6QfAKHwP4oEaYE-KOkm3qCjDgsFf_5CuPfFpOuImSR_NAPOUX4",
+    alt: "professional cinematic black and white close-up of a vintage film camera lens with sharp focus and dark background",
   },
   {
-    icon: "✈️",
-    title: "Travel Enthusiast",
-    description: "Exploring cultures to broaden perspectives",
+    title: "Travel",
+    imageSrc:
+      "https://lh3.googleusercontent.com/aida-public/AB6AXuDMFVv5j8UGDnOZmYYlxQ2bUdD-6OLN_vhyLAjMEDdHlkIYR1uaEdDjIjOM4y6hZVWvcUCYhvz50i8i_6PMsxYpPukic1amS0q8rzsffh8ov-xSb3MNKu6F01_yT-RKd8-2GNmYbmxgnGUlETg8qidT0hxorwAx_Uv2QtOCxJGcFJNXd5560jp4h0m1AKrOmG3WsEhb8WkJU0Xr8e1mobrUVDQOXjpiv1T3MACGEErq5fMUqeFQ21PESoAXpnRQP5_1rnwP1E8Jtv4",
+    alt: "minimalist architectural photography of a modern concrete building in Tokyo at night with neon signs reflection",
   },
   {
-    icon: "🎨",
-    title: "Creative Outlets",
-    description: "Drawing, singing, immersive theater",
+    title: "Gaming",
+    imageSrc:
+      "https://lh3.googleusercontent.com/aida-public/AB6AXuA0ak6WgtJsmLvMCEOUsC0hz7EUDlSA5ZEhYF3MFoZq1B36LBMiGG-4Lab5vLpgBwkCWYhZTi0XgtqClM1KG0_63aOATZUWhBiNJtiIn2IOwrenmAkakLbJ4wLYzgzrvmIq36c6R7VaWGJ6_eXEgAtnAkRqrOfKWFo8ithAWsBjedny07zah6oBEkNg-ye_csQ6qdshFbvSqrfN75dqcUjWk2D-dszBpNzWqEB_bDrwP3HWaqaKNnKuaJq32bsiapCBQNJKJWdnQHw",
+    alt: "abstract view of a futuristic mechanical keyboard with vibrant pink and purple rgb lighting in a dark room",
   },
   {
-    icon: "💪",
-    title: "Fitness & Balance",
-    description: "Maintaining focus through exercise",
+    title: "Coffee",
+    imageSrc:
+      "https://lh3.googleusercontent.com/aida-public/AB6AXuB-rqm1sx35yCHGDajp3HE1iVAteQKMdD0_pvbNf_u093fkI_4A8JY9OzRGhFNTZVOD-nqZjhlgZspmt2JcK0S6t5PXSAzJ29Jvy1EEjgry5CSAK3H1hShL5Yd7LlvgLfENc6eb_Vr3d7smx_ChLkFLRfqsfHH7cHqvkoUtH66OCT4mkLssGeLH_QceVaPuy0iaXrpqMs5LEZHe5QBNVMl2DuwLqyVxsvniFHfmS2gulAHFX1UM9yfHo5R4Jt9Xfo9ThgFDWhf94EU",
+    alt: "top view of specialized coffee pour over setup with dark roasted beans on a black slate surface",
   },
 ];
 
@@ -230,13 +252,7 @@ function AboutSection() {
                     </div>
 
                     <div className="intro-text-col">
-                      <p className="intro-text intro-text-display">
-                        {/* Bridging complex system architectures, business strategy, and UI/UX
-                        design to scale multi-tenant SaaS and platform products from 0 to 1. */}
-                        I specialize in requirement analysis, product planning, and cross-functional
-                        delivery — connecting business goals, user needs, and technical feasibility
-                        to build products that scale.
-                      </p>
+                      <p className="intro-text intro-text-display">{introText}</p>
                     </div>
                   </div>
 
@@ -259,49 +275,53 @@ function AboutSection() {
             </div>
 
             <div className={`about-panel${currentPanel === 1 ? " active" : ""}`} data-panel="1">
-              <div className="panel-content">
-                <h3 className="panel-title font-headline">
-                  <span className="title-number">01</span>
-                  Professional Journey
-                </h3>
+              <div className="panel-content py-32 px-8 bg-surface-container-lowest">
+                <div className="max-w-7xl mx-auto">
+                  <h2 className="font-headline text-5xl font-bold mb-20 tracking-tight">
+                    01 Professional Journey
+                  </h2>
 
-                <div className="journey-grid">
-                  {journeyItems.map((item) => (
-                    <div
-                      className={`journey-card${item.active ? " active" : ""}`}
-                      key={`${item.year}-${item.title}`}
-                    >
-                      <div className="journey-year">{item.year}</div>
-                      <h4>{item.title}</h4>
-                      <p>{item.description}</p>
-                      <div className="journey-tags">
-                        {item.tags.map((tag) => (
-                          <span className="tag-pill" key={`${item.year}-${tag}`}>
-                            {tag}
-                          </span>
-                        ))}
+                  <div className="journey-grid">
+                    {journeyItems.map((item) => (
+                      <div className="journey-card" key={`${item.year}-${item.label}`}>
+                        <span className="journey-year font-headline">{item.year}</span>
+                        <h3 className="journey-label font-headline">{item.label}</h3>
+                        <p className="journey-desc">{item.description}</p>
                       </div>
-                    </div>
-                  ))}
+                    ))}
+                  </div>
                 </div>
               </div>
             </div>
 
             <div className={`about-panel${currentPanel === 2 ? " active" : ""}`} data-panel="2">
-              <div className="panel-content">
-                <h3 className="panel-title font-headline">
-                  <span className="title-number">02</span>
-                  What Makes Me Different
-                </h3>
+              <div className="panel-content py-32 px-8 bg-surface-container-lowest">
+                <div className="max-w-7xl mx-auto">
+                  <h2 className="font-headline text-5xl font-bold mb-20 tracking-tight">
+                    02 What Makes Me Different
+                  </h2>
 
-                <div className="strengths-grid">
-                  {strengths.map((item) => (
-                    <div className="strength-card" key={item.title}>
-                      <div className="strength-icon">{item.icon}</div>
-                      <h4>{item.title}</h4>
-                      <p>{item.description}</p>
-                    </div>
-                  ))}
+                  <div className="strengths-mosaic">
+                    {strengths.map((item) => (
+                      <div
+                        className={`strength-tile strength-tile-tone-${item.tone}${
+                          item.span === 2 ? " strength-tile-span-2" : ""
+                        }`}
+                        key={item.title}
+                      >
+                        <span
+                          className="material-symbols-outlined strength-tile-icon"
+                          aria-hidden="true"
+                        >
+                          {item.icon}
+                        </span>
+                        <div className="strength-tile-content">
+                          <h3 className="strength-tile-title font-headline">{item.title}</h3>
+                          <p className="strength-tile-desc">{item.description}</p>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
                 </div>
               </div>
             </div>
@@ -315,13 +335,13 @@ function AboutSection() {
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-20">
                     {skillCategories.map((category) => (
                       <div className="skill-category" key={category.title}>
-                        <h4>{category.title}</h4>
+                        <h4 className="font-headline">{category.title}</h4>
                         <div className="skill-list">
                           {category.items.map((item) => (
                             <div className="skill-item" key={`${category.title}-${item.name}`}>
                               <div className="skill-info">
-                                <span className="skill-name">{item.name}</span>
-                                <span className="skill-percentage">{item.width}</span>
+                                <span className="skill-name font-headline">{item.name}</span>
+                                <span className="skill-percentage font-headline">{item.width}</span>
                               </div>
                               <div className="skill-bar">
                                 <div className="fill" style={{ width: item.width }} />
@@ -337,25 +357,22 @@ function AboutSection() {
             </div>
 
             <div className={`about-panel${currentPanel === 4 ? " active" : ""}`} data-panel="4">
-              <div className="panel-content">
-                <h3 className="panel-title font-headline">
-                  <span className="title-number">04</span>
-                  Beyond Work
-                </h3>
+              <div className="panel-content py-32 px-8 bg-surface-container-lowest">
+                <div className="max-w-7xl mx-auto">
+                  <h2 className="font-headline text-5xl font-bold mb-20 tracking-tight">
+                    04 Beyond Work
+                  </h2>
 
-                <p className="beyond-intro">
-                  Outside of product management, I&apos;m driven by curiosity and creative
-                  expression.
-                </p>
-
-                <div className="interests-grid">
-                  {interests.map((interest) => (
-                    <div className="interest-card" key={interest.title}>
-                      <div className="interest-icon">{interest.icon}</div>
-                      <h5>{interest.title}</h5>
-                      <p>{interest.description}</p>
-                    </div>
-                  ))}
+                  <div className="beyond-grid" role="list">
+                    {beyondTiles.map((tile) => (
+                      <div className="beyond-tile" key={tile.title} role="listitem">
+                        <img alt={tile.alt} className="beyond-image" src={tile.imageSrc} />
+                        <div className="beyond-caption">
+                          <span className="beyond-title font-headline">{tile.title}</span>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
                 </div>
               </div>
             </div>

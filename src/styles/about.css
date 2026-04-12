@@ -1,21 +1,28 @@
 .about-section-wrapper {
   --about-accent: #ffb2be;
   --about-accent-rgb: 255, 178, 190;
-  --about-font-headline: "Space Grotesk", "Inter", var(--font-main);
-  --about-font-body: "Inter", var(--font-main);
-  --about-font-label: "Space Grotesk", "Inter", var(--font-main);
+  --about-font-headline: var(--font-headline);
+  --about-font-body: var(--font-body);
+  --about-font-label: var(--font-label);
   position: relative;
   height: calc(var(--about-panel-count, 5) * 100vh);
   background: transparent;
+  font-family: var(--about-font-body);
 }
 
 .mega-title,
 .panel-title,
 .font-headline,
+.about-hero-quote,
+.stat-number,
+.stat-number-light,
 .journey-card h4,
 .strength-card h4,
 .interest-card h5,
-.about-hero-main h1 {
+.about-hero-main h1,
+.skill-category h4,
+.skill-name,
+.skill-percentage {
   font-family: var(--about-font-headline);
 }
 
@@ -30,14 +37,10 @@
 
 .progress-label,
 .title-number,
-.about-hero-quote,
 .stat-label,
 .stat-label-wide,
 .journey-year,
-.tag-pill,
-.skill-category h4,
-.skill-name,
-.skill-percentage {
+.tag-pill {
   font-family: var(--about-font-label);
 }
 
@@ -203,7 +206,7 @@
   max-width: 48rem;
   margin: 0;
   padding-left: var(--space-4);
-  border-left: 2px solid rgba(var(--about-accent-rgb), 0.8);
+  border-left: 2px solid #ffb2be;
   color: var(--about-accent);
   font-size: clamp(1.2rem, 2vw, 1.75rem);
   font-style: italic;
@@ -221,11 +224,14 @@
 .intro-text-display {
   max-width: 50rem;
   margin: 0;
-  color: rgba(var(--about-accent-rgb), 0.82);
-  font-size: clamp(1.75rem, 4vw, 3rem);
-  font-weight: 100;
-  line-height: 1.06;
-  letter-spacing: -0.04em;
+  color: #e1bec2;
+  font-size: clamp(1.6rem, 3.6vw, 2.75rem);
+  font-weight: 300;
+  line-height: 1.18;
+  letter-spacing: -0.02em;
+  text-align: left;
+  hyphens: auto;
+  text-wrap: balance;
 }
 
 .about-hero-stats {
@@ -264,50 +270,73 @@
   letter-spacing: 0.34em;
 }
 
+.journey-panel-title {
+  margin: 0 0 var(--space-16);
+  color: var(--about-accent);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.5em;
+  text-transform: uppercase;
+}
+
 .journey-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: var(--space-6);
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  width: 100%;
+  background: transparent;
 }
 
 .journey-card {
-  padding: var(--space-6);
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-lg);
-  background: rgba(255, 255, 255, 0.02);
-  transition: all var(--transition-base);
+  padding: var(--space-12);
+  border-right: 1px solid rgba(255, 255, 255, 0.12);
+  background: transparent;
+  transition:
+    background-color var(--transition-base),
+    color var(--transition-base);
+}
+
+.journey-card:last-child {
+  border-right: none;
 }
 
 .journey-card:hover {
-  transform: translateY(-4px);
-  border-color: rgba(var(--about-accent-rgb), 0.2);
-  background: rgba(255, 255, 255, 0.04);
-}
-
-.journey-card.active {
-  border-color: var(--about-accent);
-  background: rgba(var(--about-accent-rgb), 0.05);
+  background: transparent;
 }
 
 .journey-year {
-  margin-bottom: var(--space-3);
-  color: var(--about-accent);
-  font-size: 1.25rem;
+  display: inline-block;
+  margin-bottom: var(--space-8);
+  color: rgba(255, 255, 255, 0.25);
+  font-size: 3rem;
   font-weight: 700;
+  line-height: 1;
+  transition: color var(--transition-base);
 }
 
-.journey-card h4 {
-  margin-bottom: var(--space-2);
+.journey-label {
+  margin: var(--space-8) 0 var(--space-4);
   color: var(--text-white);
   font-size: 1.125rem;
   font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
 }
 
-.journey-card p {
-  margin-bottom: var(--space-4);
+.journey-desc {
+  margin: 0;
   color: var(--text-gray);
-  font-size: 0.9375rem;
-  line-height: 1.6;
+  font-size: 0.875rem;
+  line-height: 1.7;
+  opacity: 0.8;
+  transition: color var(--transition-base);
+}
+
+.journey-card:hover .journey-year {
+  color: #ffb2be;
+}
+
+.journey-card:hover .journey-desc {
+  color: #e1bec2;
 }
 
 .journey-tags {
@@ -364,6 +393,91 @@
   line-height: 1.6;
 }
 
+.about-panel[data-panel="2"] .panel-content {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+@media (min-width: 768px) {
+  .about-panel[data-panel="2"] .panel-content {
+    display: flex;
+    align-items: center;
+    height: 100vh;
+  }
+
+  .about-panel[data-panel="2"] .max-w-7xl {
+    width: 100%;
+  }
+}
+
+.strengths-mosaic {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-3);
+  grid-auto-rows: 185px;
+}
+
+@media (min-width: 768px) {
+  .strengths-mosaic {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.strength-tile {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 0;
+  padding: var(--space-6);
+  border-top: 1px solid rgba(var(--about-accent-rgb), 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+.strength-tile-tone-base {
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.strength-tile-tone-high {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+@media (min-width: 768px) {
+  .strength-tile-span-2 {
+    grid-column: span 2;
+  }
+}
+
+.strength-tile-icon {
+  color: var(--about-accent);
+  font-size: 1.85rem;
+  line-height: 1;
+}
+
+.strength-tile-content {
+  display: grid;
+  gap: var(--space-1);
+}
+
+.strength-tile-title {
+  margin: 0;
+  color: var(--text-white);
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.strength-tile-desc {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.62);
+  font-size: 0.85rem;
+  line-height: 1.5;
+}
+
+.about-panel[data-panel="2"] .mb-20 {
+  margin-bottom: var(--space-12);
+}
+
 /* ========== Skills & Tools 设计改版 (与 snippet 同步) ========== */
 .py-32 {
   padding-top: 8rem;
@@ -384,7 +498,7 @@
   margin-right: auto;
 }
 .font-headline {
-  font-family: var(--font-main);
+  font-family: var(--about-font-headline);
 }
 .text-5xl {
   font-size: 3rem;
@@ -474,6 +588,55 @@
   transition: width 0.8s ease-out;
 }
 
+.beyond-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-4);
+  height: 600px;
+}
+
+@media (min-width: 768px) {
+  .beyond-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+.beyond-tile {
+  position: relative;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.beyond-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.6;
+  transform: scale(1);
+  transition:
+    transform 0.7s ease,
+    opacity 0.7s ease;
+}
+
+.beyond-tile:hover .beyond-image {
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+.beyond-caption {
+  position: absolute;
+  bottom: var(--space-8);
+  left: var(--space-8);
+}
+
+.beyond-title {
+  color: var(--text-white);
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
 .beyond-intro {
   margin-bottom: var(--space-8);
   color: var(--text-gray);
@@ -533,6 +696,15 @@
 
   .journey-grid {
     grid-template-columns: 1fr;
+  }
+
+  .journey-card {
+    border-right: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  }
+
+  .journey-card:last-child {
+    border-bottom: none;
   }
 
   .strengths-grid {
