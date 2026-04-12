@@ -637,6 +637,287 @@
   text-transform: uppercase;
 }
 
+.education-honors-layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 4rem; /* gap-16 */
+}
+
+@media (min-width: 1024px) {
+  .education-honors-layout {
+    grid-template-columns: 1fr 1fr; /* lg:grid-cols-2 */
+  }
+}
+
+/* Left Column: Education */
+.edu-left {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.edu-list {
+  display: flex;
+  flex-direction: column;
+  gap: 3.5rem;
+}
+
+.edu-item {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.edu-degree {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--about-accent);
+  letter-spacing: 0.02em;
+}
+
+.edu-school {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-white);
+  margin-bottom: 0.25rem;
+}
+
+.edu-desc {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.6;
+  font-size: 1rem;
+}
+
+.edu-gpa-block {
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+  margin-top: 0.5rem;
+}
+
+.edu-gpa-label {
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.5);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.edu-gpa-value {
+  font-size: 2.25rem;
+  font-weight: 700;
+  color: var(--text-white);
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+.edu-extras {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.5rem;
+  padding-top: 2.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+@media (min-width: 768px) {
+  .edu-extras {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 3.5rem;
+  }
+}
+
+.edu-extras-title {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.34em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.35);
+  margin-bottom: 1.25rem;
+}
+
+.edu-coursework-list {
+  margin: 0;
+  padding-left: 1.25rem;
+  display: grid;
+  gap: 1rem;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 1rem;
+  line-height: 1.55;
+}
+
+.edu-coursework-list li::marker {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.edu-focus {
+  padding-top: 0;
+}
+
+@media (min-width: 768px) {
+  .edu-focus {
+    padding-left: 3rem;
+    border-left: 1px solid rgba(255, 255, 255, 0.1);
+  }
+}
+
+.edu-focus-quote {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 1.35rem;
+  font-style: italic;
+  line-height: 1.4;
+}
+
+.honors-right {
+  display: flex;
+  flex-direction: column;
+  gap: 3.5rem;
+}
+
+.honors-highlight {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.honors-highlight-title {
+  margin: 0;
+  color: var(--text-white);
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.honors-highlight-timeline {
+  color: var(--about-accent);
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.honors-highlight-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 1.25rem;
+  color: rgba(255, 255, 255, 0.65);
+  font-size: 1rem;
+  line-height: 1.55;
+}
+
+.honors-highlight-list li {
+  display: flex;
+  gap: 1.25rem;
+  align-items: flex-start;
+}
+
+.honors-highlight-list li::before {
+  content: "/";
+  color: var(--about-accent);
+  font-weight: 700;
+  line-height: 1.2;
+  margin-top: 0.2rem;
+}
+
+.honors-highlight-quote {
+  margin-top: 0.75rem;
+  padding: 2.5rem 2.75rem;
+  background: rgba(255, 178, 190, 0.08);
+  border-left: 3px solid rgba(255, 178, 190, 0.55);
+}
+
+.honors-highlight-quote-text {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.92);
+  font-size: 1.15rem;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+@media (max-width: 768px) {
+  .honors-highlight-title {
+    font-size: 1.25rem;
+  }
+
+  .honors-highlight-timeline {
+    font-size: 1rem;
+  }
+
+  .honors-highlight-list {
+    font-size: 1rem;
+    gap: 1.25rem;
+  }
+
+  .honors-highlight-quote {
+    padding: 1.75rem 1.5rem;
+  }
+
+  .honors-highlight-quote-text {
+    font-size: 1.05rem;
+  }
+}
+
+/* Right Column: Distinctions Card */
+.honors-card {
+  background-color: #1f1f1f;
+  border-radius: 4px;
+  padding: 3rem;
+  border: none;
+}
+
+.honors-header {
+  font-size: 0.85rem;
+  color: rgba(255, 178, 190, 0.4);
+  margin-bottom: 2.5rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+}
+
+.honors-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.honor-item {
+  display: flex;
+  gap: 1.5rem;
+  align-items: flex-start;
+}
+
+.honor-icon {
+  color: var(--about-accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 0.1rem;
+}
+
+.honor-icon .material-symbols-outlined {
+  font-size: 1.75rem;
+  font-variation-settings:
+    "FILL" 0,
+    "wght" 300,
+    "GRAD" 0,
+    "opsz" 24;
+}
+
+.honor-title {
+  margin: 0 0 0.4rem 0;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-white);
+  letter-spacing: 0.02em;
+}
+
+.honor-detail {
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.5);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
 .beyond-intro {
   margin-bottom: var(--space-8);
   color: var(--text-gray);

@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from "react";
 import Container from "../common/Container";
 import "../../styles/about.css";
 
-const progressLabels = ["Intro", "Journey", "Strengths", "Skills", "Beyond"];
+const progressLabels = ["Intro", "Journey", "Strengths", "Skills", "Education", "Beyond"];
 
 const introText =
   "I specialize in requirement analysis, product planning, and cross-functional delivery — connecting business goals, user needs, and technical feasibility to build products that scale.";
@@ -139,6 +139,44 @@ const beyondTiles = [
     alt: "top view of specialized coffee pour over setup with dark roasted beans on a black slate surface",
   },
 ];
+
+const educationItems = [
+  {
+    degree: "B.S. COMPUTER SCIENCE",
+    school: "University of Western Ontario（Canada）",
+    description:
+      "Specialization in Software Engineering, System Architecture, and Algorithm Design.",
+    gpa: "3.7/4.0",
+  },
+  // {
+  //   degree: "B.S. COMPUTER SCIENCE",
+  //   school: "Stanford University",
+  //   description: "Minor in Cognitive Science. Focus on HCI and algorithmic efficiency.",
+  // },
+];
+
+const coreCoursework = [
+  "C / Java / C++ / MATLAB",
+  "Systems Architecture",
+  "Computer Networks",
+  "Software Engineering",
+  "Data Structures & Algorithms",
+];
+
+const academicFocus = "Synthesizing computer science theory into scalable product architecture.";
+
+const honorsHighlight = {
+  title: "President, UWO Mandarin Debate Society",
+  timeline: "2017.09 - 2018.09",
+  bullets: [
+    "Led the team to achieve Runner-up in the Eastern Canada Debate Competition.",
+    "Organized high-frequency training sessions and inter-university exhibitions.",
+    "Multiple-time representative for UWO in prestigious debate circuits.",
+    "Honed critical thinking and public speaking skills for complex stakeholder management.",
+  ],
+  quote:
+    "The debate arena honed the critical thinking and rhetorical precision that now drives my product strategy and architectural decisions.",
+};
 
 function AboutSection() {
   const wrapperRef = useRef<HTMLElement | null>(null);
@@ -360,7 +398,76 @@ function AboutSection() {
               <div className="panel-content py-32 px-8 bg-surface-container-lowest">
                 <div className="max-w-7xl mx-auto">
                   <h2 className="font-headline text-5xl font-bold mb-20 tracking-tight">
-                    04 Beyond Work
+                    04 Education &amp; Honors
+                  </h2>
+
+                  <div className="education-honors-layout">
+                    {/* Left Column: Education */}
+                    <div className="edu-left">
+                      <div className="edu-list">
+                        {educationItems.map((item, index) => (
+                          <div key={index} className="edu-item">
+                            <h3 className="edu-degree font-headline">{item.degree}</h3>
+                            <div className="edu-school font-headline">{item.school}</div>
+                            <p className="edu-desc">{item.description}</p>
+                            {item.gpa && (
+                              <div className="edu-gpa-block">
+                                <span className="edu-gpa-label font-label">GPA METRIC:</span>
+                                <span className="edu-gpa-value font-headline">{item.gpa}</span>
+                              </div>
+                            )}
+                          </div>
+                        ))}
+                      </div>
+
+                      <div className="edu-extras">
+                        <div className="edu-coursework">
+                          <div className="edu-extras-title font-headline">CORE COURSEWORK</div>
+                          <ul className="edu-coursework-list">
+                            {coreCoursework.map((item) => (
+                              <li key={item}>{item}</li>
+                            ))}
+                          </ul>
+                        </div>
+
+                        <div className="edu-focus">
+                          <div className="edu-extras-title font-headline">ACADEMIC FOCUS</div>
+                          <p className="edu-focus-quote">“{academicFocus}”</p>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Right Column: Distinctions */}
+                    <div className="honors-right">
+                      <div className="honors-highlight">
+                        <h3 className="honors-highlight-title font-headline">
+                          {honorsHighlight.title}
+                        </h3>
+                        <div className="honors-highlight-timeline font-headline">
+                          {honorsHighlight.timeline}
+                        </div>
+                        <ul className="honors-highlight-list">
+                          {honorsHighlight.bullets.map((item) => (
+                            <li key={item}>{item}</li>
+                          ))}
+                        </ul>
+                        <div className="honors-highlight-quote">
+                          <p className="honors-highlight-quote-text font-headline">
+                            “{honorsHighlight.quote}”
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className={`about-panel${currentPanel === 5 ? " active" : ""}`} data-panel="5">
+              <div className="panel-content py-32 px-8 bg-surface-container-lowest">
+                <div className="max-w-7xl mx-auto">
+                  <h2 className="font-headline text-5xl font-bold mb-20 tracking-tight">
+                    05 Beyond Work
                   </h2>
 
                   <div className="beyond-grid" role="list">
