@@ -9,8 +9,7 @@ const journeyItems = [
   {
     year: "2019",
     title: "UI/UX Designer",
-    description:
-      "Graduated from UWO. Began career designing interfaces for international clients.",
+    description: "Graduated from UWO. Began career designing interfaces for international clients.",
     tags: ["UI/UX", "Design"],
   },
   {
@@ -48,12 +47,14 @@ const strengths = [
   {
     icon: "🔧",
     title: "Tech-Savvy PM",
-    description: "Computer Science background plus UI/UX practice helps me align engineering and design.",
+    description:
+      "Computer Science background plus UI/UX practice helps me align engineering and design.",
   },
   {
     icon: "📊",
     title: "Data-Driven",
-    description: "20% performance improvement through analytics, testing, and optimization thinking.",
+    description:
+      "20% performance improvement through analytics, testing, and optimization thinking.",
   },
   {
     icon: "⚡",
@@ -69,33 +70,27 @@ const strengths = [
 
 const skillCategories = [
   {
-    title: "Product Management",
+    title: "PRODUCT",
     items: [
-      { name: "Product Strategy", width: "95%" },
-      { name: "User Research", width: "90%" },
-      { name: "Agile/Scrum", width: "92%" },
+      { name: "Requirement Analysis", width: "95%" },
+      { name: "Product Strategy", width: "90%" },
+      { name: "Roadmapping", width: "88%" },
     ],
   },
   {
-    title: "Design Tools",
+    title: "EXECUTION",
     items: [
-      { name: "Figma", width: "95%" },
-      { name: "Axure", width: "90%" },
-      { name: "Sketch", width: "85%" },
+      { name: "PRD Writing", width: "98%" },
+      { name: "Prototyping", width: "95%" },
+      { name: "Iteration Management", width: "85%" },
     ],
   },
   {
-    title: "Project Management",
+    title: "COLLABORATION",
     items: [
-      { name: "Jira", width: "92%" },
-      { name: "Confluence", width: "88%" },
-    ],
-  },
-  {
-    title: "Languages",
-    items: [
-      { name: "English (Fluent)", width: "95%" },
-      { name: "Mandarin (Native)", width: "100%" },
+      { name: "Agile / Scrum", width: "90%" },
+      { name: "Stakeholder Management", width: "92%" },
+      { name: "Cross-functional Alignment", width: "93%" },
     ],
   },
 ];
@@ -222,43 +217,41 @@ function AboutSection() {
             <div className={`about-panel${currentPanel === 0 ? " active" : ""}`} data-panel="0">
               <div className="panel-content">
                 <div className="about-hero-display">
-                  <div className="about-hero-heading">
-                    <h2 className="mega-title">
-                      <span>About</span>
-                      <span className="title-accent">Me</span>
-                    </h2>
+                  <div className="about-hero-main">
+                    <div className="about-hero-heading">
+                      <h2 className="mega-title font-headline">
+                        <span>About</span>
+                        <span className="title-accent">Me</span>
+                      </h2>
 
-                    <blockquote className="about-hero-quote">
-                      Architecting the Intuitive. Defining the Experience.
-                    </blockquote>
-                  </div>
+                      <blockquote className="about-hero-quote">
+                        Turning Complexity into Clear Product Direction.
+                      </blockquote>
+                    </div>
 
-                  <div className="about-hero-body">
                     <div className="intro-text-col">
                       <p className="intro-text intro-text-display">
                         {/* Bridging complex system architectures, business strategy, and UI/UX
                         design to scale multi-tenant SaaS and platform products from 0 to 1. */}
-                        An experience-first Product Manager specializing in SaaS. I blend design 
-                        thinking with my robust Computer Science foundation to architect products 
-                        that solve real problems. Specializing in scaling multi-tenant platforms 
-                        from 0 to 1, I drive business growth by transforming complex functional 
-                        requirements into delightful, data-informed user experiences.
+                        I specialize in requirement analysis, product planning, and cross-functional
+                        delivery — connecting business goals, user needs, and technical feasibility
+                        to build products that scale.
                       </p>
                     </div>
+                  </div>
 
-                    <div className="about-hero-stats">
-                      <div className="stat-box stat-box-vertical">
-                        <div className="stat-number stat-number-light">5+</div>
-                        <div className="stat-label stat-label-wide">YEARS EXPERIENCE</div>
-                      </div>
-                      <div className="stat-box stat-box-vertical">
-                        <div className="stat-number stat-number-light">90%+</div>
-                        <div className="stat-label stat-label-wide">ON-TIME DELIVERY</div>
-                      </div>
-                      <div className="stat-box stat-box-vertical">
-                        <div className="stat-number stat-number-light">0 to 1</div>
-                        <div className="stat-label stat-label-wide">PRODUCT EXPERT</div>
-                      </div>
+                  <div className="about-hero-stats">
+                    <div className="stat-box stat-box-vertical">
+                      <div className="stat-number stat-number-light">5+</div>
+                      <div className="stat-label stat-label-wide">YEARS EXPERIENCE</div>
+                    </div>
+                    <div className="stat-box stat-box-vertical">
+                      <div className="stat-number stat-number-light">90%+</div>
+                      <div className="stat-label stat-label-wide">ON-TIME DELIVERY</div>
+                    </div>
+                    <div className="stat-box stat-box-vertical">
+                      <div className="stat-number stat-number-light">10+</div>
+                      <div className="stat-label stat-label-wide">PRODUCTS DELIVERED</div>
                     </div>
                   </div>
                 </div>
@@ -267,7 +260,7 @@ function AboutSection() {
 
             <div className={`about-panel${currentPanel === 1 ? " active" : ""}`} data-panel="1">
               <div className="panel-content">
-                <h3 className="panel-title">
+                <h3 className="panel-title font-headline">
                   <span className="title-number">01</span>
                   Professional Journey
                 </h3>
@@ -296,7 +289,7 @@ function AboutSection() {
 
             <div className={`about-panel${currentPanel === 2 ? " active" : ""}`} data-panel="2">
               <div className="panel-content">
-                <h3 className="panel-title">
+                <h3 className="panel-title font-headline">
                   <span className="title-number">02</span>
                   What Makes Me Different
                 </h3>
@@ -314,35 +307,38 @@ function AboutSection() {
             </div>
 
             <div className={`about-panel${currentPanel === 3 ? " active" : ""}`} data-panel="3">
-              <div className="panel-content">
-                <h3 className="panel-title">
-                  <span className="title-number">03</span>
-                  Skills &amp; Tools
-                </h3>
-
-                <div className="skills-grid">
-                  {skillCategories.map((category) => (
-                    <div className="skill-category" key={category.title}>
-                      <h4>{category.title}</h4>
-                      <div className="skill-list">
-                        {category.items.map((item) => (
-                          <div className="skill-item" key={`${category.title}-${item.name}`}>
-                            <span>{item.name}</span>
-                            <div className="skill-bar">
-                              <div className="fill" style={{ width: item.width }} />
+              <div className="panel-content py-32 px-8 bg-surface-container-lowest">
+                <div className="max-w-7xl mx-auto">
+                  <h2 className="font-headline text-5xl font-bold mb-20 tracking-tight">
+                    03 Skills &amp; Tools
+                  </h2>
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-20">
+                    {skillCategories.map((category) => (
+                      <div className="skill-category" key={category.title}>
+                        <h4>{category.title}</h4>
+                        <div className="skill-list">
+                          {category.items.map((item) => (
+                            <div className="skill-item" key={`${category.title}-${item.name}`}>
+                              <div className="skill-info">
+                                <span className="skill-name">{item.name}</span>
+                                <span className="skill-percentage">{item.width}</span>
+                              </div>
+                              <div className="skill-bar">
+                                <div className="fill" style={{ width: item.width }} />
+                              </div>
                             </div>
-                          </div>
-                        ))}
+                          ))}
+                        </div>
                       </div>
-                    </div>
-                  ))}
+                    ))}
+                  </div>
                 </div>
               </div>
             </div>
 
             <div className={`about-panel${currentPanel === 4 ? " active" : ""}`} data-panel="4">
               <div className="panel-content">
-                <h3 className="panel-title">
+                <h3 className="panel-title font-headline">
                   <span className="title-number">04</span>
                   Beyond Work
                 </h3>

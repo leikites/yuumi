@@ -6,7 +6,7 @@
   min-height: 100vh;
   padding-top: 120px; /* 为固定定位的Header留出空间 */
   overflow: hidden;
-  background: #000;
+  background: var(--bg-black);
 }
 
 /* 右侧装饰文字 */
@@ -64,31 +64,34 @@
 
 /* 顶部标签 */
 .hero-label {
-  font-size: clamp(0.7rem, 1.8vw, 0.95rem);
-  letter-spacing: 0.2em;
+  font-size: clamp(0.8rem, 2vw, 1.1rem);
+  letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: #F9B2BD;
-  margin-bottom: 24px;
+  color: #f9b2bd;
+  margin-bottom: 28px;
   font-weight: 600;
 }
 
 /* 可切换的标题容器 */
 .hero-title-primary {
   display: block;
-  margin: 0 0 20px 0;
-  font-family: "Rammetto One", system-ui, -apple-system, sans-serif;
-  font-size: clamp(3.5rem, 12vw, 8rem);
+  margin: 0 0 24px 0;
+  font-family:
+    "Rammetto One",
+    system-ui,
+    -apple-system,
+    sans-serif;
+  font-size: clamp(4rem, 14vw, 9.5rem);
   line-height: 1;
   letter-spacing: -0.03em;
   text-transform: uppercase;
   color: #ffffff;
   font-weight: 900;
-  text-shadow:
-    0 0 20px rgba(255, 255, 255, 0.1);
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
 }
 
 .hero-title-dot {
-  color: #F9B2BD;
+  color: #f9b2bd;
   font-weight: 900;
   text-shadow:
     0 0 10px rgba(249, 178, 189, 1),
@@ -99,7 +102,8 @@
 }
 
 @keyframes glow-pulse {
-  0%, 100% {
+  0%,
+  100% {
     text-shadow:
       0 0 10px rgba(249, 178, 189, 1),
       0 0 20px rgba(249, 178, 189, 0.8),
@@ -119,33 +123,33 @@
 .hero-subtitle {
   display: flex;
   align-items: center;
-  gap: 12px;
-  font-size: clamp(0.9rem, 2.2vw, 1.25rem);
-  letter-spacing: 0.1em;
+  gap: 14px;
+  font-size: clamp(1rem, 2.5vw, 1.45rem);
+  letter-spacing: 0.12em;
   text-transform: uppercase;
   color: rgba(255, 255, 255, 0.7);
-  margin-bottom: 28px;
+  margin-bottom: 32px;
   font-weight: 500;
 }
 
 .hero-subtitle-accent {
-  color: #F9B2BD;
+  color: #f9b2bd;
   font-weight: 700;
 }
 
 /* 引言文字 */
 .hero-quote {
-  font-size: clamp(0.95rem, 2vw, 1.15rem);
-  line-height: 1.7;
+  font-size: clamp(1.1rem, 2.4vw, 1.35rem);
+  line-height: 1.75;
   color: rgba(255, 255, 255, 0.65);
   font-style: italic;
-  max-width: 520px;
-  margin: 0 0 32px 0;
+  max-width: 620px;
+  margin: 0 0 36px 0;
   font-weight: 400;
 }
 
 .hero-quote-highlight {
-  color: #F9B2BD;
+  color: #f9b2bd;
   font-weight: 600;
 }
 
@@ -172,11 +176,11 @@
 
 .hero-cta-button {
   display: inline-block;
-  padding: 14px 32px;
-  border: 2px solid #F9B2BD;
-  background-color: #F9B2BD;
+  padding: 16px 40px;
+  border: 2px solid #f9b2bd;
+  background-color: #f9b2bd;
   color: #000;
-  font-size: clamp(0.8rem, 1.4vw, 0.95rem);
+  font-size: clamp(0.9rem, 1.6vw, 1.1rem);
   font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -188,7 +192,7 @@
 
 .hero-cta-button:hover {
   background-color: transparent;
-  color: #F9B2BD;
+  color: #f9b2bd;
   transform: translateY(-4px);
   box-shadow: 0 12px 28px rgba(249, 178, 189, 0.2);
 }
@@ -200,7 +204,7 @@
   left: 8px;
   right: 0;
   height: 2px;
-  border: 2px solid #F9B2BD;
+  border: 2px solid #f9b2bd;
   border-top: none;
   border-left: none;
   background: transparent;
@@ -239,14 +243,18 @@
   font-weight: 300;
   letter-spacing: 0.15em;
   color: rgba(255, 255, 255, 0.15);
-  font-family: "Inter", system-ui, -apple-system, sans-serif;
+  font-family:
+    "Inter",
+    system-ui,
+    -apple-system,
+    sans-serif;
   text-align: center;
 }
 
 .hero-number-line {
   width: 3px;
   height: 40px;
-  background: linear-gradient(to bottom, #F9B2BD, rgba(249, 178, 189, 0.1));
+  background: linear-gradient(to bottom, #f9b2bd, rgba(249, 178, 189, 0.1));
   border-radius: 2px;
 }
 

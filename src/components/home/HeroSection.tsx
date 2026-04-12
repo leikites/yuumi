@@ -20,7 +20,7 @@ function HeroSection() {
       <div className="hero-title-zone">
         <div className="hero-content">
           <div className="hero-label">IDENTITY CORE</div>
-          
+
           <h1 className="hero-title-primary">
             {siteMeta.name.toUpperCase()}
             <span className="hero-title-dot">.</span>
@@ -30,10 +30,11 @@ function HeroSection() {
             <span className="hero-subtitle-accent">|</span>
             SYSTEM ARCHITECT & PRODUCT STRATEGIST
           </div>
-          
+
           {/* 带着色单词的引言 */}
           <p className="hero-quote">
-            "Though this system be madness, yet there is <span className="hero-quote-highlight">method</span> in my craft."
+            "Though this system be madness, yet there is{" "}
+            <span className="hero-quote-highlight">method</span> in my craft."
           </p>
         </div>
 

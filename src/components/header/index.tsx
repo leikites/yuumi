@@ -14,8 +14,8 @@ function Header() {
     const targetElement = document.querySelector(href);
     if (targetElement) {
       targetElement.scrollIntoView({
-        behavior: 'smooth',
-        block: 'start'
+        behavior: "smooth",
+        block: "start",
       });
     }
   };

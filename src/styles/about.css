@@ -1,7 +1,44 @@
 .about-section-wrapper {
+  --about-accent: #ffb2be;
+  --about-accent-rgb: 255, 178, 190;
+  --about-font-headline: "Space Grotesk", "Inter", var(--font-main);
+  --about-font-body: "Inter", var(--font-main);
+  --about-font-label: "Space Grotesk", "Inter", var(--font-main);
   position: relative;
   height: calc(var(--about-panel-count, 5) * 100vh);
   background: transparent;
+}
+
+.mega-title,
+.panel-title,
+.font-headline,
+.journey-card h4,
+.strength-card h4,
+.interest-card h5,
+.about-hero-main h1 {
+  font-family: var(--about-font-headline);
+}
+
+.intro-text,
+.intro-text-display,
+.journey-card p,
+.strength-card p,
+.beyond-intro,
+.interest-card p {
+  font-family: var(--about-font-body);
+}
+
+.progress-label,
+.title-number,
+.about-hero-quote,
+.stat-label,
+.stat-label-wide,
+.journey-year,
+.tag-pill,
+.skill-category h4,
+.skill-name,
+.skill-percentage {
+  font-family: var(--about-font-label);
 }
 
 .about-sticky-container {
@@ -83,13 +120,13 @@
 }
 
 .progress-dot.active {
-  background: #ff8ebf;
-  box-shadow: 0 0 24px rgba(255, 142, 191, 0.45);
+  background: var(--about-accent);
+  box-shadow: 0 0 24px rgba(var(--about-accent-rgb), 0.45);
   transform: scale(1.3);
 }
 
 .progress-dot:hover {
-  background: rgba(255, 142, 191, 0.6);
+  background: rgba(var(--about-accent-rgb), 0.6);
   transform: scale(1.2);
 }
 
@@ -98,7 +135,7 @@
   top: 50%;
   right: 24px;
   opacity: 0;
-  color: #ff8ebf;
+  color: var(--about-accent);
   white-space: nowrap;
   font-size: 0.75rem;
   transform: translateY(-50%);
@@ -124,13 +161,20 @@
 .title-number {
   padding: var(--space-1) var(--space-3);
   border-radius: var(--radius-sm);
-  background: rgba(255, 0, 128, 0.1);
-  color: var(--accent-pink);
+  background: rgba(var(--about-accent-rgb), 0.1);
+  color: var(--about-accent);
   font-size: 1rem;
   font-weight: 600;
 }
 
 .about-hero-display {
+  display: grid;
+  grid-template-columns: minmax(0, 1.3fr) 280px;
+  gap: var(--space-12);
+  align-items: flex-end;
+}
+
+.about-hero-main {
   display: grid;
   gap: var(--space-8);
 }
@@ -152,39 +196,32 @@
 }
 
 .title-accent {
-  color: #ffa3bb;
+  color: var(--about-accent);
 }
 
 .about-hero-quote {
   max-width: 48rem;
   margin: 0;
   padding-left: var(--space-4);
-  border-left: 2px solid rgba(255, 163, 187, 0.8);
-  color: #ffb3c7;
+  border-left: 2px solid rgba(var(--about-accent-rgb), 0.8);
+  color: var(--about-accent);
   font-size: clamp(1.2rem, 2vw, 1.75rem);
   font-style: italic;
   font-weight: 600;
   line-height: 1.45;
 }
 
-.about-hero-body {
-  display: grid;
-  grid-template-columns: minmax(0, 1.3fr) 280px;
-  gap: var(--space-12);
-  align-items: start;
-}
-
 .intro-text {
   margin-bottom: var(--space-4);
   color: var(--text-gray);
-  font-size: 1.0rem;
+  font-size: 1rem;
   line-height: 1.8;
 }
 
 .intro-text-display {
   max-width: 50rem;
   margin: 0;
-  color: #E1BEC2;
+  color: rgba(var(--about-accent-rgb), 0.82);
   font-size: clamp(1.75rem, 4vw, 3rem);
   font-weight: 100;
   line-height: 1.06;
@@ -199,11 +236,11 @@
 
 .stat-box-vertical {
   padding: var(--space-2) 0 var(--space-2) var(--space-6);
-  border-left: 2px solid var(--accent-pink);
+  border-left: 2px solid var(--about-accent);
 }
 
 .stat-number {
-  color: var(--accent-pink);
+  color: var(--about-accent);
   font-size: 1.75rem;
   font-weight: 700;
   line-height: 1;
@@ -223,7 +260,7 @@
 }
 
 .stat-label-wide {
-  color: #f0a8bd;
+  color: rgba(var(--about-accent-rgb), 0.9);
   letter-spacing: 0.34em;
 }
 
@@ -243,18 +280,18 @@
 
 .journey-card:hover {
   transform: translateY(-4px);
-  border-color: rgba(255, 0, 128, 0.2);
+  border-color: rgba(var(--about-accent-rgb), 0.2);
   background: rgba(255, 255, 255, 0.04);
 }
 
 .journey-card.active {
-  border-color: var(--accent-pink);
-  background: rgba(255, 0, 128, 0.05);
+  border-color: var(--about-accent);
+  background: rgba(var(--about-accent-rgb), 0.05);
 }
 
 .journey-year {
   margin-bottom: var(--space-3);
-  color: var(--accent-pink);
+  color: var(--about-accent);
   font-size: 1.25rem;
   font-weight: 700;
 }
@@ -281,10 +318,10 @@
 
 .tag-pill {
   padding: var(--space-1) var(--space-3);
-  border: 1px solid rgba(255, 0, 128, 0.2);
+  border: 1px solid rgba(var(--about-accent-rgb), 0.2);
   border-radius: var(--radius-sm);
-  background: rgba(255, 0, 128, 0.1);
-  color: var(--accent-pink);
+  background: rgba(var(--about-accent-rgb), 0.1);
+  color: var(--about-accent);
   font-size: 0.75rem;
   font-weight: 500;
 }
@@ -305,7 +342,7 @@
 
 .strength-card:hover {
   transform: translateY(-4px);
-  border-color: rgba(255, 0, 128, 0.3);
+  border-color: rgba(var(--about-accent-rgb), 0.3);
   background: rgba(255, 255, 255, 0.04);
 }
 
@@ -327,57 +364,113 @@
   line-height: 1.6;
 }
 
-.skills-grid {
+/* ========== Skills & Tools 设计改版 (与 snippet 同步) ========== */
+.py-32 {
+  padding-top: 8rem;
+  padding-bottom: 8rem;
+}
+.px-8 {
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+.bg-surface-container-lowest {
+  background: transparent;
+} /* 根据之前的讨论保持透明 */
+.max-w-7xl {
+  max-width: 80rem;
+}
+.mx-auto {
+  margin-left: auto;
+  margin-right: auto;
+}
+.font-headline {
+  font-family: var(--font-main);
+}
+.text-5xl {
+  font-size: 3rem;
+}
+.font-bold {
+  font-weight: 700;
+}
+.mb-20 {
+  margin-bottom: 5rem;
+}
+.tracking-tight {
+  letter-spacing: -0.03em;
+}
+.grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: var(--space-8);
+}
+.grid-cols-1 {
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+}
+.gap-20 {
+  gap: 5rem;
+}
+
+@media (min-width: 768px) {
+  .md\:grid-cols-3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
 }
 
 .skill-category {
-  padding: var(--space-6);
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-lg);
-  background: rgba(255, 255, 255, 0.02);
+  background: transparent;
+  padding: 0;
+  border: none;
 }
 
 .skill-category h4 {
-  margin-bottom: var(--space-4);
-  padding-bottom: var(--space-3);
-  border-bottom: 2px solid rgba(255, 0, 128, 0.2);
-  color: var(--text-white);
-  font-size: 1rem;
+  margin-bottom: var(--space-8);
+  padding-bottom: 0;
+  border-bottom: none;
+  color: var(--about-accent);
+  font-size: 1.125rem;
   font-weight: 600;
+  letter-spacing: 0.1em;
 }
 
 .skill-list {
   display: flex;
   flex-direction: column;
-  gap: var(--space-3);
+  gap: var(--space-6);
 }
 
 .skill-item {
   display: flex;
   flex-direction: column;
-  gap: var(--space-1);
+  gap: var(--space-2);
 }
 
-.skill-item span {
+.skill-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.skill-name {
   color: var(--text-white);
-  font-size: 0.875rem;
+  font-size: 0.8rem;
   font-weight: 500;
+  letter-spacing: 0.05em;
+}
+
+.skill-percentage {
+  color: var(--text-white);
+  font-size: 0.75rem;
+  font-weight: 400;
+  opacity: 0.8;
 }
 
 .skill-bar {
-  height: 6px;
+  height: 2px;
   overflow: hidden;
-  border-radius: var(--radius-sm);
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(255, 255, 255, 0.1);
 }
 
 .skill-bar .fill {
   height: 100%;
-  border-radius: var(--radius-sm);
-  background: linear-gradient(90deg, var(--accent-pink) 0%, var(--accent-purple) 100%);
+  background: var(--about-accent);
   transition: width 0.8s ease-out;
 }
 
@@ -406,7 +499,7 @@
 
 .interest-card:hover {
   transform: translateY(-4px);
-  border-color: rgba(255, 0, 128, 0.2);
+  border-color: rgba(var(--about-accent-rgb), 0.2);
   background: rgba(255, 255, 255, 0.04);
 }
 
@@ -430,7 +523,7 @@
 }
 
 @media (max-width: 1024px) {
-  .about-hero-body {
+  .about-hero-display {
     grid-template-columns: 1fr;
   }
 
@@ -446,7 +539,7 @@
     grid-template-columns: repeat(2, 1fr);
   }
 
-  .skills-grid {
+  .skills-grid-layout {
     grid-template-columns: 1fr;
   }
 
@@ -510,14 +603,18 @@
   font-weight: 300;
   letter-spacing: 0.15em;
   color: rgba(255, 255, 255, 0.15);
-  font-family: "Inter", system-ui, -apple-system, sans-serif;
+  font-family:
+    "Inter",
+    system-ui,
+    -apple-system,
+    sans-serif;
   text-align: center;
 }
 
 .about-number-line {
   width: 3px;
   height: 40px;
-  background: linear-gradient(to bottom, #F9B2BD, rgba(249, 178, 189, 0.1));
+  background: linear-gradient(to bottom, var(--about-accent), rgba(var(--about-accent-rgb), 0.1));
   border-radius: 2px;
 }
 

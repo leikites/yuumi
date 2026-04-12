@@ -83,11 +83,7 @@ section {
   width: 200px;
   height: 200px;
   border-radius: var(--radius-lg);
-  background: linear-gradient(
-    135deg,
-    rgba(255, 0, 128, 0.15) 0%,
-    rgba(123, 44, 191, 0.15) 100%
-  );
+  background: linear-gradient(135deg, rgba(255, 0, 128, 0.15) 0%, rgba(123, 44, 191, 0.15) 100%);
 }
 
 .pill-container {
