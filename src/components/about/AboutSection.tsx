@@ -183,9 +183,13 @@ function AboutSection() {
   const [currentPanel, setCurrentPanel] = useState(0);
   const [isActiveZone, setIsActiveZone] = useState(false);
   const totalPanels = progressLabels.length;
+  const lastScrollYRef = useRef(0);
+  const snapLockRef = useRef(false);
+  const snapTimeoutRef = useRef<number | null>(null);
 
   useEffect(() => {
     let ticking = false;
+    lastScrollYRef.current = window.scrollY;
 
     const updatePanelBasedOnScroll = () => {
       const wrapper = wrapperRef.current;
@@ -215,7 +219,34 @@ function AboutSection() {
     const onScroll = () => {
       if (!ticking) {
         window.requestAnimationFrame(() => {
+          const wrapper = wrapperRef.current;
+          const currentScrollY = window.scrollY;
+          const isScrollingUp = currentScrollY < lastScrollYRef.current;
+
+          if (wrapper && isScrollingUp && !snapLockRef.current) {
+            const wrapperTopAbs = wrapper.offsetTop;
+            const wrapperBottomAbs = wrapperTopAbs + wrapper.offsetHeight;
+            const wasBelow = lastScrollYRef.current > wrapperBottomAbs;
+            const hasEnteredFromBelow =
+              currentScrollY <= wrapperBottomAbs && currentScrollY >= wrapperTopAbs;
+
+            if (wasBelow && hasEnteredFromBelow) {
+              snapLockRef.current = true;
+              window.scrollTo({ top: wrapperTopAbs, behavior: "smooth" });
+              setCurrentPanel(0);
+
+              if (snapTimeoutRef.current) {
+                window.clearTimeout(snapTimeoutRef.current);
+              }
+              snapTimeoutRef.current = window.setTimeout(() => {
+                snapLockRef.current = false;
+                snapTimeoutRef.current = null;
+              }, 700);
+            }
+          }
+
           updatePanelBasedOnScroll();
+          lastScrollYRef.current = currentScrollY;
           ticking = false;
         });
         ticking = true;
@@ -227,6 +258,10 @@ function AboutSection() {
     window.addEventListener("resize", onScroll);
 
     return () => {
+      if (snapTimeoutRef.current) {
+        window.clearTimeout(snapTimeoutRef.current);
+        snapTimeoutRef.current = null;
+      }
       window.removeEventListener("scroll", onScroll);
       window.removeEventListener("resize", onScroll);
     };

@@ -982,6 +982,8 @@
 .experience-section .section-header {
   max-width: 1200px;
   margin: 0 auto 64px;
+  display: grid;
+  gap: 32px;
 }
 
 .experience-section .section-title {
@@ -994,6 +996,14 @@
   -webkit-background-clip: border-box;
   -webkit-text-fill-color: currentColor;
   background-clip: border-box;
+}
+
+.experience-section .mega-title {
+  margin: 0;
+}
+
+.experience-section .intro-text-display {
+  margin: 0;
 }
 
 .experience-section .section-subtitle {

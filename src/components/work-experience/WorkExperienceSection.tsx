@@ -309,8 +309,11 @@ function WorkExperienceSection() {
     <section id="experience" className="experience-section">
       <Container>
         <div className="section-header">
-          <h2 className="section-title font-headline">EXPERIENCE</h2>
-          <p className="section-subtitle font-body">{heroCopy.subtitle}</p>
+          <h2 className="mega-title font-headline">
+            <span>Work</span>
+            <span className="title-accent">Experience</span>
+          </h2>
+          <p className="intro-text intro-text-display">{heroCopy.subtitle}</p>
         </div>
 
         <div className="scroll-hint" id="scrollHint" ref={hintRef} aria-hidden="true">
