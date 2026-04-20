@@ -114,20 +114,20 @@ function ProjectsSection() {
 
   useGSAP(
     () => {
-      const tiles = gsap.utils.toArray<HTMLElement>(".project-tile");
-      gsap.set(tiles, { opacity: 0, y: 24, filter: "blur(10px)" });
+      const rows = gsap.utils.toArray<HTMLElement>(".project-ledger-row");
+      gsap.set(rows, { opacity: 0, y: 20, filter: "blur(8px)" });
 
       // Batch entrance for consistent rhythm and fewer triggers.
-      ScrollTrigger.batch(tiles, {
+      ScrollTrigger.batch(rows, {
         start: "top 85%",
         onEnter: (batch) => {
           gsap.to(batch, {
             opacity: 1,
             y: 0,
             filter: "blur(0px)",
-            duration: 0.8,
+            duration: 0.75,
             ease: "power3.out",
-            stagger: 0.08,
+            stagger: 0.1,
             overwrite: "auto",
           });
         },
@@ -166,26 +166,23 @@ function ProjectsSection() {
     tile.style.removeProperty("--mouse-y");
   };
 
-  const projectById = Object.fromEntries(
-    projects.map((project) => [project.id, project]),
-  ) as Record<number, Project>;
+  const renderTags = (project: Project) => (
+    <div className="project-ledger-tags" aria-label="Project tags">
+      {project.hoverTags.slice(0, 3).map((tag) => (
+        <span className="project-ledger-tag font-label" key={`${project.id}-${tag}`}>
+          {tag.replace(/^#/, "")}
+        </span>
+      ))}
+    </div>
+  );
 
-  const renderTags = (project: Project) => {
-    if (!project.hoverTags.length) {
-      return null;
-    }
-
+  const renderMetric = (value?: string, label?: string, suffix?: string) => {
+    if (!value && !label && !suffix) return null;
     return (
-      <div className="project-tags">
-        {project.hoverTags.map((tag, tagIndex) => (
-          <span
-            className="project-tag font-label"
-            key={`${project.id}-${tag}`}
-            style={{ "--tag-index": tagIndex } as React.CSSProperties}
-          >
-            {tag}
-          </span>
-        ))}
+      <div className="project-ledger-metric">
+        {value ? <div className="project-ledger-metric-value font-headline">{value}</div> : null}
+        {label ? <div className="project-ledger-metric-label font-label">{label}</div> : null}
+        {suffix ? <div className="project-ledger-metric-suffix font-label">{suffix}</div> : null}
       </div>
     );
   };
@@ -209,220 +206,47 @@ function ProjectsSection() {
             </p>
           </header>
 
-          <div className="projects-matrix">
-            <article
-              className="project-tile project-tile--p1"
-              data-tone={projectById[1].tone}
-              onMouseMove={onTileMouseMove}
-              onMouseLeave={onTileMouseLeave}
-            >
-              {renderTags(projectById[1])}
-              <div className="project-number font-label" aria-hidden="true">
-                {projectById[1].number}
-              </div>
-
-              <div className="project-body">
-                <div className="project-header-row">
-                  <span className="project-code font-label">01_ALPHA</span>
-                </div>
-
-                <div className="project-title-row">
-                  <span className="project-title-accent" aria-hidden="true" />
-                  <h3 className="project-name font-headline">{projectById[1].title}</h3>
-                </div>
-                <p className="project-desc font-body">{projectById[1].description}</p>
-              </div>
-
-              <div className="project-footer">
-                {projectById[1].imageSrc ? (
-                  <div className="project-media" aria-hidden="true">
-                    <img src={projectById[1].imageSrc} alt={projectById[1].imageAlt ?? ""} />
-                  </div>
-                ) : null}
-
-                <div className="project-footer-row">
-                  <div className="project-impact">
-                    <div className="project-impact-value font-headline">30%</div>
-                    <div className="project-impact-label font-label">Delivery Cycle Reduction</div>
-                  </div>
-                  <span className="material-symbols-outlined project-footer-icon">
-                    arrow_outward
-                  </span>
-                </div>
-              </div>
-            </article>
-
-            <article
-              className="project-tile project-tile--p2"
-              data-tone={projectById[2].tone}
-              onMouseMove={onTileMouseMove}
-              onMouseLeave={onTileMouseLeave}
-            >
-              {renderTags(projectById[2])}
-              <div className="project-number font-label" aria-hidden="true">
-                {projectById[2].number}
-              </div>
-
-              <div className="project-body">
-                <div className="project-header-row">
-                  <span className="project-code font-label">02_BETA</span>
-                  <div className="project-micro-metric">
-                    <div className="project-micro-metric-label font-label">Impact_Metric</div>
-                    <div className="project-micro-metric-value font-headline">PHASE 2</div>
-                    <div className="project-micro-metric-sub font-label">
-                      Schedule Order Deployment
+          <div className="projects-ledger" role="list">
+            {projects.map((project) => (
+              <article
+                key={project.id}
+                className="project-ledger-row"
+                data-tone={project.tone}
+                onMouseMove={onTileMouseMove}
+                onMouseLeave={onTileMouseLeave}
+                role="listitem"
+              >
+                <div className="project-ledger-grid">
+                  <div className="project-ledger-meta">
+                    <div className="project-ledger-meta-kicker font-label">PROJECT</div>
+                    <div className="project-ledger-meta-number font-label">{project.number}</div>
+                    <div className="project-ledger-meta-label font-label">
+                      {project.label || "INDEPENDENT"}
                     </div>
                   </div>
-                </div>
 
-                <div className="project-title-row">
-                  <span className="project-title-accent" aria-hidden="true" />
-                  <h3 className="project-name font-headline">{projectById[2].title}</h3>
-                </div>
+                  <div className="project-ledger-main">
+                    <h3 className="project-ledger-title font-headline">{project.title}</h3>
+                    <p className="project-ledger-desc font-body">{project.description}</p>
+                  </div>
 
-                <div className="project-footer-row project-footer-row--inline">
-                  <p className="project-desc font-body">{projectById[2].description}</p>
-                  <span className="material-symbols-outlined project-footer-icon">monitoring</span>
-                </div>
-              </div>
-            </article>
-
-            <article
-              className="project-tile project-tile--p3"
-              data-tone={projectById[3].tone}
-              onMouseMove={onTileMouseMove}
-              onMouseLeave={onTileMouseLeave}
-            >
-              {renderTags(projectById[3])}
-              <div className="project-number font-label" aria-hidden="true">
-                {projectById[3].number}
-              </div>
-
-              <div className="project-body">
-                <span className="project-code project-code--small font-label">03_GAMMA</span>
-                <h3 className="project-name project-name--small font-headline">
-                  {projectById[3].title}
-                </h3>
-              </div>
-
-              <div className="project-footer">
-                <div className="project-impact-value font-headline">250K CNY</div>
-                <div className="project-impact-label font-label">Revenue generated in 14 days</div>
-              </div>
-            </article>
-
-            <article
-              className="project-tile project-tile--p4"
-              data-tone={projectById[4].tone}
-              onMouseMove={onTileMouseMove}
-              onMouseLeave={onTileMouseLeave}
-            >
-              {renderTags(projectById[4])}
-              <div className="project-number font-label" aria-hidden="true">
-                {projectById[4].number}
-              </div>
-
-              <div className="project-body">
-                <span className="project-code project-code--small font-label">04_DELTA</span>
-                <h3 className="project-name project-name--small font-headline">
-                  {projectById[4].title}
-                </h3>
-              </div>
-
-              <div className="project-footer">
-                <div className="project-verified">
-                  <span className="material-symbols-outlined project-verified-icon">verified</span>
-                  <span className="project-verified-text font-headline">PATENT_SECURED</span>
-                </div>
-                <p className="project-desc project-desc--small font-body">
-                  {projectById[4].description}
-                </p>
-              </div>
-            </article>
-
-            <article
-              className="project-tile project-tile--p5"
-              data-tone={projectById[5].tone}
-              onMouseMove={onTileMouseMove}
-              onMouseLeave={onTileMouseLeave}
-            >
-              {renderTags(projectById[5])}
-              <div className="project-number font-label" aria-hidden="true">
-                {projectById[5].number}
-              </div>
-
-              <div className="project-body">
-                <div className="project-header-row">
-                  <div>
-                    <span className="project-code font-label">05_EPSILON</span>
-                    <div className="project-title-row">
-                      <span className="project-title-accent" aria-hidden="true" />
-                      <h3 className="project-name font-headline">{projectById[5].title}</h3>
+                  <aside className="project-ledger-card" aria-label="Project metrics">
+                    <div className="project-ledger-card-header">{renderTags(project)}</div>
+                    <div className="project-ledger-card-body">
+                      {renderMetric(project.metricValue, project.metricLabel, project.metricSuffix)}
+                      {renderMetric(
+                        project.secondaryMetricValue,
+                        project.secondaryMetricLabel,
+                        project.secondaryMetricSuffix,
+                      )}
+                      <div className="project-ledger-card-icon" aria-hidden="true">
+                        <span className="material-symbols-outlined">arrow_outward</span>
+                      </div>
                     </div>
-                  </div>
-                  <div className="project-icon-stack" aria-hidden="true">
-                    <span className="material-symbols-outlined project-icon-muted">
-                      account_balance
-                    </span>
-                    <span className="material-symbols-outlined project-icon-muted">
-                      medical_services
-                    </span>
-                  </div>
+                  </aside>
                 </div>
-
-                <div className="project-status-row">
-                  <p className="project-desc font-body">{projectById[5].description}</p>
-                  <div className="project-status">
-                    <div className="project-status-label font-label">System_Status</div>
-                    <div className="project-status-value">
-                      <span className="project-status-dot" aria-hidden="true" />
-                      <span className="font-headline">LIVE_DEPLOYED</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </article>
-
-            <article
-              className="project-tile project-tile--p6"
-              data-tone={projectById[6].tone}
-              onMouseMove={onTileMouseMove}
-              onMouseLeave={onTileMouseLeave}
-            >
-              {renderTags(projectById[6])}
-              <div className="project-number font-label" aria-hidden="true">
-                {projectById[6].number}
-              </div>
-
-              <div className="project-body">
-                <span className="project-code project-code--small font-label">06_ZETA</span>
-                <h3 className="project-name project-name--small font-headline">
-                  Global Auction Engine
-                </h3>
-              </div>
-
-              <div className="project-footer">
-                <p className="project-desc project-desc--small font-body">
-                  Real-time state synchronization for high-frequency bidding worldwide.
-                </p>
-                <div className="project-footer-row project-footer-row--inline">
-                  <span className="project-footnote font-label">High-Concurrency</span>
-                  <span className="material-symbols-outlined project-footer-icon">gavel</span>
-                </div>
-              </div>
-            </article>
-
-            <div className="project-tile project-tile--deco" aria-hidden="true">
-              <div className="project-deco-shapes">
-                <div className="project-deco-shape project-deco-shape--a" />
-                <div className="project-deco-shape project-deco-shape--b" />
-                <div className="project-deco-shape project-deco-shape--c" />
-              </div>
-              <div className="project-deco-meta">
-                <div className="project-deco-label font-label">System Integrity</div>
-                <div className="project-deco-value font-label">99.99% UPTIME</div>
-              </div>
-            </div>
+              </article>
+            ))}
           </div>
         </main>
       </Container>
