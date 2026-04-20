@@ -1,0 +1,10 @@
+import { c as globalLogger } from "./main-CYOGr7IM.js";
+import { t as enableDebug } from "./debug-BmAPbhgA-BPQhbB8P.js";
+import { a as resolveUserConfig, i as mergeConfig, n as buildWithConfigs, t as build$1 } from "./build-DU-BFLB1-BP6FOpRZ.js";
+import * as Rolldown from "@voidzero-dev/vite-plus-core/rolldown";
+//#region ../../node_modules/.pnpm/tsdown@0.21.7_@arethetypeswrong+core@0.18.2_@tsdown+css@0.21.7_@tsdown+exe@0.21.7_@type_f4ea40ca957034c1fa8bb4b9c4426b84/node_modules/tsdown/dist/config.mjs
+function defineConfig(options) {
+	return options;
+}
+//#endregion
+export { Rolldown, build$1 as build, buildWithConfigs, defineConfig, enableDebug, globalLogger, mergeConfig, resolveUserConfig };
