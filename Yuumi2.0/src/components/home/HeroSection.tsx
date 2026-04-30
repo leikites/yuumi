@@ -19,7 +19,7 @@ function HeroSection() {
 
       <div className="hero-title-zone">
         <div className="hero-content">
-          <div className="hero-label">IDENTITY CORE</div>
+          <div className="hero-label">XIAOLEI HE</div>
 
           <h1 className="hero-title-primary">
             {siteMeta.name.toUpperCase()}
@@ -28,13 +28,13 @@ function HeroSection() {
 
           <div className="hero-subtitle">
             <span className="hero-subtitle-accent">|</span>
-            SYSTEM ARCHITECT & PRODUCT STRATEGIST
+            AI-NATIVE PRODUCT MANAGER
           </div>
 
-          {/* 带着色单词的引言 */}
           <p className="hero-quote">
-            "Though this system be madness, yet there is{" "}
-            <span className="hero-quote-highlight">method</span> in my craft."
+            Building ride-hailing, SaaS billing, and cross-border platforms with{" "}
+            <span className="hero-quote-highlight">AI-powered</span> product workflows. Clear PRDs,
+            fast iteration, measurable outcomes.
           </p>
         </div>
 

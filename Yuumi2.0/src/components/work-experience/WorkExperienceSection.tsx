@@ -5,112 +5,161 @@ import "../../styles/experience.css";
 
 const heroCopy = {
   subtitle:
-    "Architecting scalable logic and engineering high-impact delivery for global infrastructures.",
+    "Shipping ride-hailing, SaaS billing, and cross-border products with AI-powered workflows and measurable results.",
+};
+
+const tagFadeClassByNode: Record<string, string> = {
+  "01": "tag-fade-1",
+  "02": "tag-fade-1",
+  "03": "tag-fade-075",
+  "04": "tag-fade-06",
+  "05": "tag-fade-05",
+  "06": "tag-fade-04",
 };
 
 const timelineItems = [
   {
     node: "01",
     companyNumber: "01//",
-    companyName: "GUANGZHOU DAOQI TECHNOLOGY",
-    companyType: "SAAS / BILLING SYSTEMS",
-    dateRange: "2025.03 — PRESENT",
-    jobTitle: "SENIOR PRODUCT MANAGER",
+    companyName: "GOGOX (HKEX: 2246)",
+    companyType: "RIDE-HAILING / FLEET",
+    dateRange: "Jan 2026 — Present · Hong Kong",
+    jobTitle: "PRODUCT MANAGER",
     achievements: [
       {
-        title: "SAAS INFRASTRUCTURE",
+        title: "AMIGO TAXI · 3-APP ECOSYSTEM",
         description:
-          "Directed the 0-to-1 development of Unibee Billing Cloud, implementing robust multi-tenant isolation protocols and scalable subscription architecture for enterprise-level deployment.",
+          "Own product planning and iteration across Client App, Driver App, and Admin Panel for Amigo Taxi — one of five Hong Kong Government-licensed fleets, operated by CMG Fleet (a GOGOX × City Motors JV) with 600+ vehicles including 400 EVs.",
       },
       {
-        title: "SYSTEM OPTIMIZATION",
+        title: "COMPETITIVE STRATEGY",
         description:
-          "Led performance testing and optimization initiatives, achieving 20% improvement in system response time through targeted refactoring of core billing modules.",
+          "Benchmarked HKTaxi, Uber HK, and Sing Kwan Taxi to define a differentiated rider and driver experience; designed Admin Panel for driver onboarding, fleet management, real-time order monitoring, and analytics.",
       },
       {
-        title: "STRATEGIC DELIVERY",
+        title: "AI AGENT WORKFLOWS · +40%",
         description:
-          "Engineered a 30% reduction in delivery cycles through implementation of agile architectural reviews and optimized cross-functional communication protocols.",
+          "Standardized daily product work with Claude, Cursor, and custom MCP tools for competitive analysis, PRD drafting, and data processing — boosting team productivity by ~40%.",
       },
     ],
   },
   {
     node: "02",
     companyNumber: "02//",
-    companyName: "GUANGZHOU FEIMEI NETWORK",
-    companyType: "E-COMMERCE / OPERATIONS",
-    dateRange: "2024.09 — 2025.03",
+    companyName: "DAOQI TECHNOLOGY",
+    companyType: "SAAS / BILLING",
+    dateRange: "Mar 2025 — Jan 2026 · Guangzhou",
     jobTitle: "PRODUCT MANAGER",
     achievements: [
       {
-        title: "SYSTEM INTEGRATION",
+        title: "UNIBEE BILLING · OPEN SOURCE",
         description:
-          "Led complete iteration and optimization of KOL Operations, Advertising, and Logistics systems, significantly improving functionality and user experience.",
+          "Led iteration for UniBee Billing System (AGPLv3) — positioned as an open-source alternative to Recurly, Chargebee, and Paddle. Improved system response speed by 20% and strengthened core subscription billing and payment integrations.",
       },
       {
-        title: "PROCESS OPTIMIZATION",
+        title: "CLOUD MVP IN 1 MONTH",
         description:
-          "Streamlined business workflows through systematic process analysis, implementing data-driven solutions that enhanced operational efficiency.",
+          "Architected UniBee Cloud Version from 0 to 1 with multi-tenant isolation and AWS / Alibaba Cloud deployment, shipping MVP within 1 month.",
+      },
+      {
+        title: "COMMERCIAL IMPACT",
+        description:
+          "Drove 15% pricing page conversion uplift and delivered 100% on-time releases for critical milestones with a cross-functional team of 5.",
       },
     ],
   },
   {
     node: "03",
     companyNumber: "03//",
-    companyName: "GUANGZHOU SIPIN EDUCATION",
-    companyType: "EDTECH / PLATFORM",
-    dateRange: "2023.08 — 2024.09",
-    jobTitle: "PRODUCT MANAGER & DEPT. LEAD",
+    companyName: "FEIMEI NETWORK",
+    companyType: "E-COMMERCE / OPERATIONS",
+    dateRange: "Sep 2024 — Mar 2025 · Guangzhou",
+    jobTitle: "PRODUCT MANAGER",
     achievements: [
       {
-        title: "REVENUE GENERATION",
+        title: "3 INTERNAL SYSTEMS · OWNED",
         description:
-          "Launched CPU EdTech Platform, driving 250k CNY in revenue within 14 days by optimizing conversion funnels and streamlining digital asset distribution workflows.",
+          "Owned end-to-end iteration for KOL Operations, Ad Placement, and Logistics systems — covering KOL management, task workflows, finance, analytics, and content modules.",
       },
       {
-        title: "TEAM LEADERSHIP",
+        title: "BUSINESS-PRODUCT TRANSLATION",
         description:
-          "Independently completed product planning from scratch, market research, and competitive analysis while coordinating cross-functional teams for successful delivery.",
+          "Partnered with business stakeholders to diagnose pain points and translate them into shippable product specs, prototypes, and UI iterations.",
+      },
+      {
+        title: "DELIVERY & FEEDBACK LOOPS",
+        description:
+          "Drove digital transformation of company operations through disciplined release cycles, risk management, and post-launch feedback loops.",
       },
     ],
   },
   {
     node: "04",
     companyNumber: "04//",
-    companyName: "GUANGZHOU PENGJU INFORMATION",
-    companyType: "FINTECH / RETAIL",
-    dateRange: "2021.05 — 2023.07",
-    jobTitle: "PRODUCT MANAGER",
+    companyName: "SIPINYOU EDUCATION",
+    companyType: "EDTECH / PLATFORM",
+    dateRange: "Aug 2023 — Sep 2024 · Guangzhou",
+    jobTitle: "PRODUCT MANAGER & DEPT. HEAD",
     achievements: [
       {
-        title: "INTELLECTUAL PROPERTY",
+        title: "CPU PLATFORM LAUNCH",
         description:
-          "Pioneered the BaoLian jewelry distribution platform. Authored and successfully filed a National Patent for innovative B2B2C supply chain traceability algorithms.",
+          "Led end-to-end delivery across Admin / Web / H5 clients for the CPU online education platform — generating ¥250K in course sales within 2 weeks of launch.",
       },
       {
-        title: "CROSS-BORDER SOLUTIONS",
+        title: "FULL-CYCLE OWNERSHIP",
         description:
-          "Orchestrated Hong Kong Kuangshi Auction and UnionPay systems, integrating complex payment protocols while maintaining high-level security compliance for cross-border transactions.",
+          "Owned market research, competitive analysis, prototyping, UI iteration, project management, and stakeholder training as PM and department head.",
+      },
+      {
+        title: "CROSS-TEAM ORCHESTRATION",
+        description:
+          "Navigated ambiguous requirements and resource constraints through cross-team coordination; ran internal testing cycles to ensure pre-launch stability.",
       },
     ],
   },
   {
     node: "05",
     companyNumber: "05//",
+    companyName: "PENGJU INFORMATION",
+    companyType: "NEW RETAIL / CROSS-BORDER",
+    dateRange: "May 2021 — Jul 2023 · Guangzhou",
+    jobTitle: "PRODUCT MANAGER",
+    achievements: [
+      {
+        title: "BAOLIAN · PATENTED 0-TO-1",
+        description:
+          "Delivered 0-to-1 jewelry distribution + new retail e-commerce platform spanning C-end (App / Mini Program / H5), B-end supplier and store portals — business model granted a patent.",
+      },
+      {
+        title: "HK PRODUCTS · MULTI-CLIENT",
+        description:
+          "Shipped Hong Kong products including auction system (live streaming + custom bid-step rules), UnionPay HK pop-up zone (× 7-Eleven, FamilyMart, K11), and medical insurance distribution platform.",
+      },
+      {
+        title: "MICROSERVICE ARCHITECTURE",
+        description:
+          "Partnered with engineering to design a microservice middle-platform structure enabling modular development and rapid iteration across business lines.",
+      },
+    ],
+  },
+  {
+    node: "06",
+    companyNumber: "06//",
     companyName: "EARLY CAREER",
     companyType: "UI/UX DESIGN",
-    dateRange: "2019.10 — 2021.04",
+    dateRange: "Oct 2019 — Apr 2021 · Guangzhou / Chengdu",
     jobTitle: "UI/UX DESIGNER & PRODUCT ASSISTANT",
     achievements: [
       {
-        title: "DESIGN FOUNDATION",
+        title: "UI/UX FOUNDATION",
         description:
-          "Built technical expertise in UI/UX design and product planning, establishing the foundation for transition into product management role.",
+          "Owned end-to-end UI/UX for web products and supported product planning with prototypes and requirement docs.",
       },
       {
-        title: "CROSS-FUNCTIONAL COLLABORATION",
+        title: "BILINGUAL COLLABORATION",
         description:
-          "Collaborated with engineering teams on SaaS retail systems, gaining comprehensive understanding of full product development lifecycle.",
+          "Liaised directly with North American clients in fluent English — laying the foundation for cross-border product work today.",
       },
     ],
   },
@@ -355,7 +404,11 @@ function WorkExperienceSection() {
                 <div className="company-info">
                   <div className="company-number font-headline">{item.companyNumber}</div>
                   <h3 className="company-name font-headline">{item.companyName}</h3>
-                  <p className="company-type font-label">{item.companyType}</p>
+                  <p
+                    className={`company-type font-label ${tagFadeClassByNode[item.node] ?? "tag-fade-1"}`}
+                  >
+                    {item.companyType}
+                  </p>
                   <div className="date-range font-headline">{item.dateRange}</div>
                   <div className="job-title font-label">{item.jobTitle}</div>
                 </div>

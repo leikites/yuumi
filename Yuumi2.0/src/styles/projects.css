@@ -316,6 +316,204 @@
   line-height: 1.7;
 }
 
+/* Showcase grid (matches the card layout in the screenshot) */
+.projects-showcase-grid {
+  margin-top: var(--space-16);
+  display: grid;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+  gap: 22px;
+}
+
+@media (min-width: 720px) {
+  .projects-showcase-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1100px) {
+  .projects-showcase-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 26px;
+  }
+}
+
+.project-showcase-card {
+  --project-accent-rgb: var(--accent-pink-rgb);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 286px;
+  padding: 26px 26px 22px 26px;
+  border-radius: 22px;
+  background:
+    radial-gradient(900px circle at 10% 0%, rgba(255, 255, 255, 0.05), transparent 45%),
+    rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  box-shadow:
+    0 18px 46px rgba(0, 0, 0, 0.6),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  overflow: hidden;
+  transition:
+    transform 320ms cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 320ms cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 420ms cubic-bezier(0.16, 1, 0.3, 1),
+    background-color 420ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.project-showcase-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    520px circle at var(--mouse-x, 60%) var(--mouse-y, 20%),
+    rgba(var(--project-accent-rgb), 0.14),
+    transparent 52%
+  );
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 380ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.project-showcase-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(0, 0, 0, 0.18) 0%, rgba(0, 0, 0, 0) 55%),
+    radial-gradient(800px circle at 85% 120%, rgba(0, 0, 0, 0.55), transparent 60%);
+  pointer-events: none;
+  opacity: 0.9;
+}
+
+.project-showcase-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(var(--project-accent-rgb), 0.55);
+  box-shadow:
+    0 26px 64px rgba(0, 0, 0, 0.68),
+    0 0 0 1px rgba(var(--project-accent-rgb), 0.22),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  background-color: rgba(var(--project-accent-rgb), 0.02);
+}
+
+.project-showcase-card:hover::before {
+  opacity: 1;
+}
+
+.project-showcase-card[data-tone="lowest"] {
+  --project-accent-rgb: var(--accent-pink-rgb);
+}
+
+.project-showcase-card[data-tone="low"] {
+  --project-accent-rgb: var(--accent-hot-rgb);
+}
+
+.project-showcase-card[data-tone="high"] {
+  --project-accent-rgb: var(--accent-hot-rgb);
+}
+
+.project-showcase-card[data-tone="base"] {
+  --project-accent-rgb: var(--accent-pink-rgb);
+}
+
+.project-showcase-top {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1.25rem;
+  margin-bottom: 18px;
+}
+
+.project-showcase-eyebrow {
+  color: rgba(255, 255, 255, 0.55);
+  font-size: 11px;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+}
+
+.project-showcase-icon {
+  color: rgba(var(--project-accent-rgb), 0.78);
+  opacity: 0.95;
+  transform: translateY(-2px);
+}
+
+.project-showcase-icon .material-symbols-outlined {
+  font-size: 20px;
+}
+
+.project-showcase-body {
+  position: relative;
+  z-index: 1;
+  flex: 1;
+}
+
+.project-showcase-title {
+  margin: 0 0 12px 0;
+  font-size: clamp(1.9rem, 2.4vw, 2.65rem);
+  letter-spacing: -0.045em;
+  line-height: 1.03;
+  color: rgba(255, 255, 255, 0.95);
+}
+
+.project-showcase-desc {
+  margin: 0;
+  max-width: 52ch;
+  color: rgba(255, 255, 255, 0.66);
+  font-size: 0.98rem;
+  line-height: 1.75;
+}
+
+.project-showcase-footer {
+  position: relative;
+  z-index: 1;
+  margin-top: 22px;
+}
+
+.project-showcase-metric {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.project-showcase-metric-label {
+  color: rgba(255, 255, 255, 0.4);
+  font-size: 10px;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+}
+
+.project-showcase-metric-value {
+  color: rgba(var(--project-accent-rgb), 0.95);
+  font-size: 1.15rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.project-showcase-meter {
+  margin-top: 12px;
+  height: 2px;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.project-showcase-meter-fill {
+  display: block;
+  height: 100%;
+  width: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(var(--project-accent-rgb), 0.1) 0%,
+    rgba(var(--project-accent-rgb), 0.95) 45%,
+    rgba(var(--accent-pink-rgb), 0.95) 100%
+  );
+  box-shadow: 0 0 0 1px rgba(var(--project-accent-rgb), 0.08);
+  transition: width 520ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
 /* Ledger layout (matches the "experience ledger" vibe) */
 .projects-ledger {
   border-top: 1px solid rgba(255, 255, 255, 0.08);

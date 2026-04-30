@@ -22,6 +22,8 @@ type Project = {
   secondaryMetricSuffix?: string;
   hoverTags: string[];
   tone: "lowest" | "low" | "high" | "base";
+  icon: string;
+  meter?: number;
   imageSrc?: string;
   imageAlt?: string;
 };
@@ -29,77 +31,97 @@ type Project = {
 const projects: Project[] = [
   {
     id: 1,
-    title: "Unibee Billing System",
+    title: "Amigo Taxi Platform",
     description:
-      "SaaS infrastructure with a focus on multi-tenant architecture and seamless cloud migration strategies.",
-    label: "SaaS Infrastructure",
+      "Three-app ecosystem (Client, Driver, Admin) for a Hong Kong Government-licensed taxi fleet, covering fleet operations, real-time monitoring, and continuous rider/driver experience optimization. AI agent workflows lifted team productivity by ~40%.",
+    label: "Mobility Solution",
     number: "01",
-    metricLabel: "Key Metric",
-    metricValue: "-30%",
-    metricSuffix: "Delivery Cycles",
-    secondaryMetricLabel: "Execution",
-    secondaryMetricValue: "30 Days",
-    secondaryMetricSuffix: "MVP Launch",
-    hoverTags: ["#SAAS", "#MULTI-TENANT", "#CLOUD-NATIVE"],
+    metricLabel: "Fleet Scope",
+    metricValue: "600+",
+    metricSuffix: "Vehicles",
+    secondaryMetricLabel: "EV Fleet",
+    secondaryMetricValue: "400",
+    secondaryMetricSuffix: "EVs",
+    hoverTags: ["#RIDE-HAILING", "#FLEET-MGMT", "#AI-WORKFLOWS"],
     tone: "lowest",
-    imageSrc:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuBhw3Gq_yO-jAKuP3pCKFQWHBJ0-VeryyMAQFF5-nCMXHxKJtIHuUjVeTt4QfYXHRC8zJSSIARKM4_T3RMn_9N8mBWQSLpnZ5flz9b40uf79vUFtO8KJ4vQc1w3FMaAaFKeIIZ1xeqBjpY6xMX1JPMw4qAx-DCoZcv_yC-uLY-knq4j0e1U8n5XOSFl3MTw5TdNeVmkz6b4YqyKooa7_qJf20u7v4bLNj42tq-adqyGq_jrAavbKWgv1VxqJDdKvGM7iYoMtyoLU10",
-    imageAlt:
-      "Abstract macro shot of server rack blinking lights and complex fiber optic wiring in a dark data center",
+    icon: "local_taxi",
+    meter: 98.4,
   },
   {
     id: 2,
-    title: "HK Amigo Taxi",
+    title: "UniBee Billing System",
     description:
-      "Mobility & fleet management through advanced algorithmic routing and regulatory logic.",
-    label: "Mobility",
+      "Open-source subscription billing system and cloud version. Improved response speed by 20%, shipped Cloud MVP in 1 month, lifted pricing conversion by 15%, and achieved 100% on-time delivery for critical releases.",
+    label: "Fintech SaaS",
     number: "02",
-    metricLabel: "Success",
-    metricValue: '"Launched Schedule Order Phase 2"',
-    hoverTags: ["#MOBILITY", "#FLEET-OPS", "#REAL-TIME"],
+    metricLabel: "Response Speed",
+    metricValue: "+20%",
+    secondaryMetricLabel: "Cloud MVP",
+    secondaryMetricValue: "1 Month",
+    hoverTags: ["#SAAS", "#BILLING", "#SUBSCRIPTIONS"],
     tone: "low",
+    icon: "credit_card",
+    meter: 84,
   },
   {
     id: 3,
-    title: "CPU EdTech Platform",
-    description: "High-concurrency O2O marketplace system handling rapid transactional bursts.",
-    label: "",
+    title: "KOL Operations Management System",
+    description:
+      "Internal operations platform spanning KOL management, task workflows, finance, analytics, and content — driving operational digital transformation and standardizing execution.",
+    label: "Influence Engine",
     number: "03",
-    metricLabel: "Revenue / 14 Days",
-    metricValue: "250K CNY",
-    hoverTags: ["#EDTECH", "#O2O", "#HIGH-CONCURRENCY"],
+    metricLabel: "Outcome",
+    metricValue: "Ops",
+    metricSuffix: "Transformation",
+    hoverTags: ["#KOL", "#OPS", "#WORKFLOWS"],
     tone: "high",
+    icon: "monitoring",
+    meter: 78,
   },
   {
     id: 4,
-    title: "JewelLink Supply Chain",
-    description: "Microservices-based distribution logic securing technological IP.",
-    label: "",
+    title: "CPU Online Education System",
+    description:
+      "Online education platform across Admin, Web, and H5 clients — owned full-cycle delivery from requirements to launch and iteration.",
+    label: "EdTech",
     number: "04",
-    metricLabel: "National Patent Secured",
-    metricValue: "",
-    hoverTags: ["#SUPPLY-CHAIN", "#MICROSERVICES", "#PATENTED"],
+    metricLabel: "Sales",
+    metricValue: "¥250K",
+    metricSuffix: "in 2 Weeks",
+    hoverTags: ["#EDTECH", "#LAUNCH", "#DELIVERY"],
     tone: "base",
+    icon: "school",
+    meter: 92,
   },
   {
     id: 5,
-    title: "UnionPay HK & Healthcare",
+    title: "Baolian Jewelry Distribution Platform",
     description:
-      "Fintech/MedTech crossover: digital coupon clearing and insurance distribution systems.",
-    label: "",
+      "Jewelry distribution + new retail e-commerce platform spanning multi-client experiences and operations, built around a unique distribution model.",
+    label: "Luxury E-Commerce",
     number: "05",
-    hoverTags: ["#FINTECH", "#MEDTECH", "#INSURANCE"],
+    metricLabel: "Key Result",
+    metricValue: "Patented",
+    metricSuffix: "Model",
+    hoverTags: ["#E-COMMERCE", "#DISTRIBUTION", "#PATENTED"],
     tone: "low",
+    icon: "diamond",
+    meter: 68,
   },
   {
     id: 6,
-    title: "International Auction System",
+    title: "HK Auction / UnionPay / Medical Insurance Platforms",
     description:
-      "Real-time bidding logic and proxy automation supporting high-concurrency international auctions across multiple timezones.",
-    label: "Global E-Commerce",
+      "Cross-border platforms spanning international auctions, coupon redemption, and medical insurance distribution — delivered end-to-end product workflows for Hong Kong users and partners.",
+    label: "Digital Marketplace",
     number: "06",
-    hoverTags: ["#GLOBAL-SYNC", "#REAL-TIME", "#LOGIC-HEAVY"],
+    metricLabel: "Auctions",
+    metricValue: "Multiple",
+    metricSuffix: "Successful Runs",
+    hoverTags: ["#CROSS-BORDER", "#PAYMENTS", "#HONG-KONG"],
     tone: "lowest",
+    icon: "gavel",
+    meter: 88,
   },
 ];
 
@@ -114,11 +136,11 @@ function ProjectsSection() {
 
   useGSAP(
     () => {
-      const rows = gsap.utils.toArray<HTMLElement>(".project-ledger-row");
-      gsap.set(rows, { opacity: 0, y: 20, filter: "blur(8px)" });
+      const cards = gsap.utils.toArray<HTMLElement>(".project-showcase-card");
+      gsap.set(cards, { opacity: 0, y: 18, filter: "blur(10px)" });
 
       // Batch entrance for consistent rhythm and fewer triggers.
-      ScrollTrigger.batch(rows, {
+      ScrollTrigger.batch(cards, {
         start: "top 85%",
         onEnter: (batch) => {
           gsap.to(batch, {
@@ -166,25 +188,9 @@ function ProjectsSection() {
     tile.style.removeProperty("--mouse-y");
   };
 
-  const renderTags = (project: Project) => (
-    <div className="project-ledger-tags" aria-label="Project tags">
-      {project.hoverTags.slice(0, 3).map((tag) => (
-        <span className="project-ledger-tag font-label" key={`${project.id}-${tag}`}>
-          {tag.replace(/^#/, "")}
-        </span>
-      ))}
-    </div>
-  );
-
-  const renderMetric = (value?: string, label?: string, suffix?: string) => {
-    if (!value && !label && !suffix) return null;
-    return (
-      <div className="project-ledger-metric">
-        {value ? <div className="project-ledger-metric-value font-headline">{value}</div> : null}
-        {label ? <div className="project-ledger-metric-label font-label">{label}</div> : null}
-        {suffix ? <div className="project-ledger-metric-suffix font-label">{suffix}</div> : null}
-      </div>
-    );
+  const renderMetricValue = (project: Project) => {
+    const parts = [project.metricValue, project.metricSuffix].filter(Boolean).join(" ");
+    return parts || "—";
   };
 
   return (
@@ -206,45 +212,46 @@ function ProjectsSection() {
             </p>
           </header>
 
-          <div className="projects-ledger" role="list">
+          <div className="projects-showcase-grid" role="list">
             {projects.map((project) => (
               <article
                 key={project.id}
-                className="project-ledger-row"
+                className="project-showcase-card"
                 data-tone={project.tone}
                 onMouseMove={onTileMouseMove}
                 onMouseLeave={onTileMouseLeave}
                 role="listitem"
               >
-                <div className="project-ledger-grid">
-                  <div className="project-ledger-meta">
-                    <div className="project-ledger-meta-kicker font-label">PROJECT</div>
-                    <div className="project-ledger-meta-number font-label">{project.number}</div>
-                    <div className="project-ledger-meta-label font-label">
-                      {project.label || "INDEPENDENT"}
-                    </div>
+                <header className="project-showcase-top">
+                  <div className="project-showcase-eyebrow font-label">
+                    {(project.label || "Independent").toUpperCase()}
                   </div>
-
-                  <div className="project-ledger-main">
-                    <h3 className="project-ledger-title font-headline">{project.title}</h3>
-                    <p className="project-ledger-desc font-body">{project.description}</p>
+                  <div className="project-showcase-icon" aria-hidden="true">
+                    <span className="material-symbols-outlined">{project.icon}</span>
                   </div>
+                </header>
 
-                  <aside className="project-ledger-card" aria-label="Project metrics">
-                    <div className="project-ledger-card-header">{renderTags(project)}</div>
-                    <div className="project-ledger-card-body">
-                      {renderMetric(project.metricValue, project.metricLabel, project.metricSuffix)}
-                      {renderMetric(
-                        project.secondaryMetricValue,
-                        project.secondaryMetricLabel,
-                        project.secondaryMetricSuffix,
-                      )}
-                      <div className="project-ledger-card-icon" aria-hidden="true">
-                        <span className="material-symbols-outlined">arrow_outward</span>
-                      </div>
-                    </div>
-                  </aside>
+                <div className="project-showcase-body">
+                  <h3 className="project-showcase-title font-headline">{project.title}</h3>
+                  <p className="project-showcase-desc font-body">{project.description}</p>
                 </div>
+
+                <footer className="project-showcase-footer" aria-label="Project metric">
+                  <div className="project-showcase-metric">
+                    <div className="project-showcase-metric-label font-label">
+                      {(project.metricLabel || "Impact").toUpperCase()}
+                    </div>
+                    <div className="project-showcase-metric-value font-headline">
+                      {renderMetricValue(project)}
+                    </div>
+                  </div>
+                  <div className="project-showcase-meter" aria-hidden="true">
+                    <span
+                      className="project-showcase-meter-fill"
+                      style={{ width: `${Math.max(0, Math.min(100, project.meter ?? 72))}%` }}
+                    />
+                  </div>
+                </footer>
               </article>
             ))}
           </div>

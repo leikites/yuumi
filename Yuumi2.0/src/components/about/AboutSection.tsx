@@ -6,7 +6,7 @@ import "../../styles/about.css";
 const progressLabels = ["Intro", "Journey", "Strengths", "Skills", "Education", "Beyond"];
 
 const introText =
-  "I specialize in requirement analysis, product planning, and cross-functional delivery — connecting business goals, user needs, and technical feasibility to build products that scale.";
+  "AI-native Product Manager with 5+ years of experience across ride-hailing platforms, SaaS billing systems, new retail e-commerce, and cross-border businesses. Strong at turning ambiguous problems into clear PRDs, prototypes, and shippable iterations — powered by AI workflows (Claude, ChatGPT, Cursor, v0) and custom MCP Servers.";
 
 const journeyItems = [
   {
@@ -86,29 +86,91 @@ const strengths = [
   },
 ];
 
-const skillCategories = [
+type SkillMetricItem = {
+  name: string;
+  width: string;
+};
+
+type SkillMetricCard = {
+  kind: "metric";
+  key: string;
+  title: string;
+  icon: string;
+  tone: "wide" | "tall" | "base" | "accent";
+  items: SkillMetricItem[];
+};
+
+type SkillLanguageCard = {
+  kind: "language";
+  key: string;
+  title: string;
+  icon: string;
+  tone: "wide" | "tall" | "base" | "accent";
+  languages: Array<{ name: string; level: string }>;
+};
+
+type SkillCard = SkillMetricCard | SkillLanguageCard;
+
+const skillCards: SkillCard[] = [
   {
-    title: "PRODUCT",
+    kind: "metric",
+    key: "product",
+    title: "PRODUCT & DESIGN STRATEGY",
+    icon: "hub",
+    tone: "wide",
     items: [
       { name: "Requirement Analysis", width: "95%" },
-      { name: "Product Strategy", width: "90%" },
-      { name: "Roadmapping", width: "88%" },
+      { name: "Product Roadmap", width: "92%" },
+      { name: "PRD Writing", width: "95%" },
+      { name: "Prototyping", width: "92%" },
     ],
   },
   {
-    title: "EXECUTION",
+    kind: "metric",
+    key: "ai",
+    title: "AI WORKFLOW",
+    icon: "smart_toy",
+    tone: "tall",
     items: [
-      { name: "PRD Writing", width: "98%" },
-      { name: "Prototyping", width: "95%" },
-      { name: "Iteration Management", width: "85%" },
+      { name: "Prompt Engineering", width: "92%" },
+      { name: "AI Agent Workflows", width: "92%" },
+      { name: "MCP Server Development", width: "86%" },
     ],
   },
   {
+    kind: "metric",
+    key: "tech",
+    title: "TECHNICAL STACK",
+    icon: "terminal",
+    tone: "base",
+    items: [
+      { name: "Swagger / API Docs", width: "88%" },
+      { name: "JavaScript", width: "78%" },
+      { name: "Python", width: "75%" },
+    ],
+  },
+  {
+    kind: "metric",
+    key: "collab",
     title: "COLLABORATION",
+    icon: "groups",
+    tone: "base",
     items: [
       { name: "Agile / Scrum", width: "90%" },
-      { name: "Stakeholder Management", width: "92%" },
-      { name: "Cross-functional Alignment", width: "93%" },
+      { name: "Stakeholder Mgmt", width: "86%" },
+      { name: "Git / Version Control", width: "94%" },
+    ],
+  },
+  {
+    kind: "language",
+    key: "lang",
+    title: "LANGUAGES",
+    icon: "language",
+    tone: "accent",
+    languages: [
+      { name: "Cantonese", level: "Native" },
+      { name: "Mandarin", level: "Advanced" },
+      { name: "English", level: "Fluent" },
     ],
   },
 ];
@@ -124,7 +186,7 @@ const beyondTiles = [
     title: "Travel",
     imageSrc:
       "https://lh3.googleusercontent.com/aida-public/AB6AXuDMFVv5j8UGDnOZmYYlxQ2bUdD-6OLN_vhyLAjMEDdHlkIYR1uaEdDjIjOM4y6hZVWvcUCYhvz50i8i_6PMsxYpPukic1amS0q8rzsffh8ov-xSb3MNKu6F01_yT-RKd8-2GNmYbmxgnGUlETg8qidT0hxorwAx_Uv2QtOCxJGcFJNXd5560jp4h0m1AKrOmG3WsEhb8WkJU0Xr8e1mobrUVDQOXjpiv1T3MACGEErq5fMUqeFQ21PESoAXpnRQP5_1rnwP1E8Jtv4",
-    alt: "minimalist architectural photography of a modern concrete building in Tokyo at night with neon signs reflection",
+    alt: "minimalist architectural photography of a modern concrete building at night with neon signs reflection",
   },
   {
     title: "Gaming",
@@ -142,11 +204,10 @@ const beyondTiles = [
 
 const educationItems = [
   {
-    degree: "B.S. COMPUTER SCIENCE",
-    school: "University of Western Ontario（Canada）",
-    description:
-      "Specialization in Software Engineering, System Architecture, and Algorithm Design.",
-    gpa: "3.7/4.0",
+    degree: "B.SC. IN COMPUTER SCIENCE",
+    school: "Western University (UWO) · Ontario, Canada",
+    description: "Sep 2014 — May 2019",
+    gpa: "87/100",
   },
   // {
   //   degree: "B.S. COMPUTER SCIENCE",
@@ -155,15 +216,10 @@ const educationItems = [
   // },
 ];
 
-const coreCoursework = [
-  "C / Java / C++ / MATLAB",
-  "Systems Architecture",
-  "Computer Networks",
-  "Software Engineering",
-  "Data Structures & Algorithms",
-];
+const coreCoursework = ["C", "Java", "MATLAB", "C++", "Computer Architecture", "Computer Networks"];
 
-const academicFocus = "Synthesizing computer science theory into scalable product architecture.";
+const academicFocus =
+  "Computer science foundation for API-first collaboration, analytical problem solving, and fast product delivery.";
 
 const honorsHighlight = {
   title: "President, UWO Mandarin Debate Society",
@@ -182,19 +238,74 @@ function AboutSection() {
   const wrapperRef = useRef<HTMLElement | null>(null);
   const [currentPanel, setCurrentPanel] = useState(0);
   const [isActiveZone, setIsActiveZone] = useState(false);
+  const [suspendTransitions, setSuspendTransitions] = useState(false);
   const totalPanels = progressLabels.length;
   const lastScrollYRef = useRef(0);
   const snapLockRef = useRef(false);
   const snapTimeoutRef = useRef<number | null>(null);
   const snapTargetRef = useRef<number | null>(null);
+  const skipSnapUntilRef = useRef(0);
+  const isNavigatingRef = useRef(false);
+  const navigationIdleTimeoutRef = useRef<number | null>(null);
+  const navigationHashRef = useRef<string | null>(null);
 
   useEffect(() => {
     let ticking = false;
     lastScrollYRef.current = window.scrollY;
 
+    const beginNavigationLock = (hash: string | null) => {
+      isNavigatingRef.current = true;
+      navigationHashRef.current = hash;
+      skipSnapUntilRef.current = Date.now() + 8000;
+      setSuspendTransitions(true);
+
+      if (hash === "#about") {
+        setCurrentPanel((prev) => (prev === 0 ? prev : 0));
+      }
+    };
+
+    const scheduleNavigationUnlock = () => {
+      if (navigationIdleTimeoutRef.current) {
+        window.clearTimeout(navigationIdleTimeoutRef.current);
+        navigationIdleTimeoutRef.current = null;
+      }
+
+      navigationIdleTimeoutRef.current = window.setTimeout(() => {
+        isNavigatingRef.current = false;
+        navigationHashRef.current = null;
+        navigationIdleTimeoutRef.current = null;
+        setSuspendTransitions(false);
+        updatePanelBasedOnScroll();
+      }, 180);
+    };
+
+    const onHashChange = () => {
+      if (window.location.hash.startsWith("#")) {
+        beginNavigationLock(window.location.hash);
+      }
+    };
+
+    const onDocumentClick = (event: MouseEvent) => {
+      const target = event.target;
+      if (!(target instanceof Element)) {
+        return;
+      }
+      const anchor = target.closest('a[href^="#"]');
+      if (anchor) {
+        const href = anchor.getAttribute("href");
+        beginNavigationLock(href);
+      }
+    };
+
     const updatePanelBasedOnScroll = () => {
       const wrapper = wrapperRef.current;
       if (!wrapper) {
+        return;
+      }
+
+      if (isNavigatingRef.current && navigationHashRef.current === "#about") {
+        setIsActiveZone(true);
+        setCurrentPanel((prev) => (prev === 0 ? prev : 0));
         return;
       }
 
@@ -209,14 +320,20 @@ function AboutSection() {
       const wrapperTop = rect.top;
       const wrapperHeight = rect.height;
       const windowHeight = window.innerHeight;
-      const hasEnteredStickyZone = wrapperTop <= 0 && wrapperTop + wrapperHeight >= windowHeight;
+
+      const isAbove = wrapperTop > 0;
+      const isBelow = wrapperTop + wrapperHeight < windowHeight;
+      const hasEnteredStickyZone = !isAbove && !isBelow;
 
       setIsActiveZone(hasEnteredStickyZone);
 
-      if (!hasEnteredStickyZone) {
-        // When About is not the active sticky zone (user is above it or below it),
-        // always normalize to the hero panel so re-entering never shows tail panels.
-        setCurrentPanel((prev) => (prev === 0 ? prev : 0));
+      if (isAbove) {
+        setCurrentPanel(0);
+        return;
+      }
+
+      if (isBelow) {
+        setCurrentPanel(totalPanels - 1);
         return;
       }
 
@@ -234,12 +351,46 @@ function AboutSection() {
           const currentScrollY = window.scrollY;
           const isScrollingUp = currentScrollY < lastScrollYRef.current;
 
+          if (isNavigatingRef.current) {
+            scheduleNavigationUnlock();
+            lastScrollYRef.current = currentScrollY;
+            ticking = false;
+            return;
+          }
+
           // If we're currently snapping, keep forcing the scroll position to About's top
           // for a short moment to defeat trackpad inertia.
           if (snapLockRef.current && snapTargetRef.current != null) {
             window.scrollTo({ top: snapTargetRef.current, behavior: "auto" });
             setCurrentPanel(0);
             lastScrollYRef.current = snapTargetRef.current;
+            ticking = false;
+            return;
+          }
+
+          const scrollDelta = Math.abs(currentScrollY - lastScrollYRef.current);
+          const fastScrollThreshold = Math.max(90, window.innerHeight * 0.12);
+
+          if (wrapper && scrollDelta > fastScrollThreshold) {
+            const rect = wrapper.getBoundingClientRect();
+            const wrapperTopAbs = rect.top + window.scrollY;
+            const wrapperBottomAbs = wrapperTopAbs + rect.height;
+
+            if (currentScrollY < wrapperTopAbs - window.innerHeight) {
+              setIsActiveZone(false);
+              setCurrentPanel(0);
+            } else if (currentScrollY > wrapperBottomAbs) {
+              setIsActiveZone(false);
+              setCurrentPanel(totalPanels - 1);
+            } else {
+              setIsActiveZone(true);
+              setCurrentPanel((prev) => {
+                const next = isScrollingUp ? 0 : totalPanels - 1;
+                return prev === next ? prev : next;
+              });
+            }
+
+            lastScrollYRef.current = currentScrollY;
             ticking = false;
             return;
           }
@@ -256,7 +407,11 @@ function AboutSection() {
             const enteredFromBelow =
               prevScrollY > wrapperBottomAbs && currentScrollY <= wrapperBottomAbs;
 
-            if (enteredFromBelow) {
+            if (
+              enteredFromBelow &&
+              Date.now() >= skipSnapUntilRef.current &&
+              !isNavigatingRef.current
+            ) {
               snapLockRef.current = true;
               snapTargetRef.current = wrapperTopAbs;
               setCurrentPanel(0);
@@ -293,6 +448,8 @@ function AboutSection() {
     };
 
     updatePanelBasedOnScroll();
+    window.addEventListener("hashchange", onHashChange);
+    document.addEventListener("click", onDocumentClick, true);
     window.addEventListener("scroll", onScroll, { passive: true });
     window.addEventListener("resize", onScroll);
 
@@ -301,6 +458,12 @@ function AboutSection() {
         window.clearTimeout(snapTimeoutRef.current);
         snapTimeoutRef.current = null;
       }
+      if (navigationIdleTimeoutRef.current) {
+        window.clearTimeout(navigationIdleTimeoutRef.current);
+        navigationIdleTimeoutRef.current = null;
+      }
+      window.removeEventListener("hashchange", onHashChange);
+      document.removeEventListener("click", onDocumentClick, true);
       window.removeEventListener("scroll", onScroll);
       window.removeEventListener("resize", onScroll);
     };
@@ -312,6 +475,7 @@ function AboutSection() {
       return;
     }
 
+    setCurrentPanel((prev) => (prev === index ? prev : index));
     const wrapperTop = wrapper.getBoundingClientRect().top + window.scrollY;
     const wrapperHeight = wrapper.offsetHeight;
     const windowHeight = window.innerHeight;
@@ -328,6 +492,7 @@ function AboutSection() {
       id="about"
       className="about-section-wrapper"
       ref={wrapperRef}
+      data-suspend-transitions={suspendTransitions ? "true" : "false"}
       style={{ "--about-panel-count": totalPanels } as React.CSSProperties}
     >
       <div className={`about-progress-indicator${isActiveZone ? " is-visible" : ""}`}>
@@ -359,7 +524,7 @@ function AboutSection() {
                       </h2>
 
                       <blockquote className="about-hero-quote">
-                        Turning Complexity into Clear Product Direction.
+                        AI-native product workflows. Results-driven delivery.
                       </blockquote>
                     </div>
 
@@ -371,15 +536,21 @@ function AboutSection() {
                   <div className="about-hero-stats">
                     <div className="stat-box stat-box-vertical">
                       <div className="stat-number stat-number-light">5+</div>
-                      <div className="stat-label stat-label-wide">YEARS EXPERIENCE</div>
+                      <div className="stat-label stat-label-wide">YEARS PRODUCT EXPERIENCE</div>
                     </div>
                     <div className="stat-box stat-box-vertical">
-                      <div className="stat-number stat-number-light">90%+</div>
-                      <div className="stat-label stat-label-wide">ON-TIME DELIVERY</div>
+                      <div className="stat-number stat-number-light">600+</div>
+                      <div className="stat-label stat-label-wide">VEHICLES PLATFORM SCOPE</div>
                     </div>
                     <div className="stat-box stat-box-vertical">
-                      <div className="stat-number stat-number-light">10+</div>
-                      <div className="stat-label stat-label-wide">PRODUCTS DELIVERED</div>
+                      <div className="stat-number stat-number-light">40%</div>
+                      <div className="stat-label stat-label-wide">
+                        AI WORKFLOWS PRODUCTIVITY LIFT
+                      </div>
+                    </div>
+                    <div className="stat-box stat-box-vertical">
+                      <div className="stat-number stat-number-light">1</div>
+                      <div className="stat-label stat-label-wide">MONTH SAAS CLOUD MVP</div>
                     </div>
                   </div>
                 </div>
@@ -440,29 +611,82 @@ function AboutSection() {
 
             <div className={`about-panel${currentPanel === 3 ? " active" : ""}`} data-panel="3">
               <div className="panel-content py-32 px-8 bg-surface-container-lowest">
-                <div className="max-w-7xl mx-auto">
+                <div className="max-w-7xl mx-auto skills-panel-shell">
                   <h2 className="font-headline text-5xl font-bold mb-20 tracking-tight">
                     03 Skills &amp; Tools
                   </h2>
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-20">
-                    {skillCategories.map((category) => (
-                      <div className="skill-category" key={category.title}>
-                        <h4 className="font-headline">{category.title}</h4>
-                        <div className="skill-list">
-                          {category.items.map((item) => (
-                            <div className="skill-item" key={`${category.title}-${item.name}`}>
-                              <div className="skill-info">
-                                <span className="skill-name font-headline">{item.name}</span>
-                                <span className="skill-percentage font-headline">{item.width}</span>
-                              </div>
-                              <div className="skill-bar">
-                                <div className="fill" style={{ width: item.width }} />
-                              </div>
+                  <div className="skills-grid">
+                    {skillCards.map((card) => {
+                      if (card.kind === "language") {
+                        return (
+                          <section
+                            className={`skills-card skills-card-tone-${card.tone}`}
+                            data-tone={card.tone}
+                            data-layout={card.tone}
+                            key={card.key}
+                          >
+                            <header className="skills-card-header">
+                              <h3 className="skills-card-title font-headline">{card.title}</h3>
+                              <span className="material-symbols-outlined skills-card-icon">
+                                {card.icon}
+                              </span>
+                            </header>
+                            <div className="skills-language-list" role="list">
+                              {card.languages.map((lang) => (
+                                <div
+                                  className="skills-language-item"
+                                  key={`${card.key}-${lang.name}`}
+                                  role="listitem"
+                                >
+                                  <div className="skills-language-name font-headline">
+                                    {lang.name}
+                                  </div>
+                                  <div className="skills-language-level font-label">
+                                    {lang.level}
+                                  </div>
+                                </div>
+                              ))}
                             </div>
-                          ))}
-                        </div>
-                      </div>
-                    ))}
+                          </section>
+                        );
+                      }
+
+                      const isWide = card.tone === "wide";
+
+                      return (
+                        <section
+                          className={`skills-card skills-card-tone-${card.tone}`}
+                          data-tone={card.tone}
+                          data-layout={card.tone}
+                          key={card.key}
+                        >
+                          <header className="skills-card-header">
+                            <h3 className="skills-card-title font-headline">{card.title}</h3>
+                            <span className="material-symbols-outlined skills-card-icon">
+                              {card.icon}
+                            </span>
+                          </header>
+                          <div className={`skills-metric-grid${isWide ? " is-two-col" : ""}`}>
+                            {card.items.map((item) => (
+                              <div className="skills-metric" key={`${card.key}-${item.name}`}>
+                                <div className="skills-metric-row">
+                                  <span className="skills-metric-name font-label">{item.name}</span>
+                                  <span className="skills-metric-value font-label">
+                                    {item.width}
+                                  </span>
+                                </div>
+                                <div className="skills-meter" aria-hidden="true">
+                                  <div
+                                    className="skills-meter-fill"
+                                    style={{ width: item.width }}
+                                  />
+                                </div>
+                              </div>
+                            ))}
+                          </div>
+                        </section>
+                      );
+                    })}
                   </div>
                 </div>
               </div>

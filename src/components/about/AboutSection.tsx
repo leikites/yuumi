@@ -186,6 +186,7 @@ function AboutSection() {
   const lastScrollYRef = useRef(0);
   const snapLockRef = useRef(false);
   const snapTimeoutRef = useRef<number | null>(null);
+  const snapTargetRef = useRef<number | null>(null);
 
   useEffect(() => {
     let ticking = false;
@@ -197,15 +198,31 @@ function AboutSection() {
         return;
       }
 
+      // When we snap into About from below, briefly lock to panel 0 and
+      // ignore progress-based panel computation.
+      if (snapLockRef.current) {
+        setCurrentPanel((prev) => (prev === 0 ? prev : 0));
+        return;
+      }
+
       const rect = wrapper.getBoundingClientRect();
       const wrapperTop = rect.top;
       const wrapperHeight = rect.height;
       const windowHeight = window.innerHeight;
-      const hasEnteredStickyZone = wrapperTop <= 0 && wrapperTop + wrapperHeight >= windowHeight;
+
+      const isAbove = wrapperTop > 0;
+      const isBelow = wrapperTop + wrapperHeight < windowHeight;
+      const hasEnteredStickyZone = !isAbove && !isBelow;
 
       setIsActiveZone(hasEnteredStickyZone);
 
-      if (!hasEnteredStickyZone) {
+      if (isAbove) {
+        setCurrentPanel(0);
+        return;
+      }
+
+      if (isBelow) {
+        setCurrentPanel(totalPanels - 1);
         return;
       }
 
@@ -223,27 +240,55 @@ function AboutSection() {
           const currentScrollY = window.scrollY;
           const isScrollingUp = currentScrollY < lastScrollYRef.current;
 
-          if (wrapper && isScrollingUp && !snapLockRef.current) {
-            const wrapperTopAbs = wrapper.offsetTop;
-            const wrapperBottomAbs = wrapperTopAbs + wrapper.offsetHeight;
-            const wasBelow = lastScrollYRef.current > wrapperBottomAbs;
-            const hasEnteredFromBelow =
-              currentScrollY <= wrapperBottomAbs && currentScrollY >= wrapperTopAbs;
+          // If we're currently snapping, keep forcing the scroll position to About's top
+          // for a short moment to defeat trackpad inertia.
+          if (snapLockRef.current && snapTargetRef.current != null) {
+            window.scrollTo({ top: snapTargetRef.current, behavior: "auto" });
+            setCurrentPanel(0);
+            lastScrollYRef.current = snapTargetRef.current;
+            ticking = false;
+            return;
+          }
 
-            if (wasBelow && hasEnteredFromBelow) {
+          // Entering About from below (Experience -> About):
+          // when scrolling up and the previous scrollY was below About's bottom, snap to About top.
+          if (wrapper && isScrollingUp && !snapLockRef.current) {
+            const rect = wrapper.getBoundingClientRect();
+            const wrapperTopAbs = rect.top + window.scrollY;
+            const wrapperBottomAbs = wrapperTopAbs + rect.height;
+            const prevScrollY = lastScrollYRef.current;
+
+            // Crossing into About's scroll range from below
+            const enteredFromBelow =
+              prevScrollY > wrapperBottomAbs && currentScrollY <= wrapperBottomAbs;
+
+            if (enteredFromBelow) {
               snapLockRef.current = true;
-              window.scrollTo({ top: wrapperTopAbs, behavior: "smooth" });
+              snapTargetRef.current = wrapperTopAbs;
               setCurrentPanel(0);
+              window.scrollTo({ top: wrapperTopAbs, behavior: "auto" });
+              lastScrollYRef.current = wrapperTopAbs;
 
               if (snapTimeoutRef.current) {
                 window.clearTimeout(snapTimeoutRef.current);
+                snapTimeoutRef.current = null;
               }
+
+              // Release quickly; after this, scrolling down progresses panels in order.
               snapTimeoutRef.current = window.setTimeout(() => {
                 snapLockRef.current = false;
+                snapTargetRef.current = null;
                 snapTimeoutRef.current = null;
-              }, 700);
+                updatePanelBasedOnScroll();
+              }, 180);
+
+              ticking = false;
+              return;
             }
           }
+
+          // Note: we do not unlock early on scroll-down here, because the user's input inertia may
+          // momentarily reverse direction; we rely on the short enforcement window instead.
 
           updatePanelBasedOnScroll();
           lastScrollYRef.current = currentScrollY;
@@ -437,7 +482,6 @@ function AboutSection() {
                   </h2>
 
                   <div className="education-honors-layout">
-                    {/* Left Column: Education */}
                     <div className="edu-left">
                       <div className="edu-list">
                         {educationItems.map((item, index) => (
@@ -472,7 +516,6 @@ function AboutSection() {
                       </div>
                     </div>
 
-                    {/* Right Column: Distinctions */}
                     <div className="honors-right">
                       <div className="honors-highlight">
                         <h3 className="honors-highlight-title font-headline">
