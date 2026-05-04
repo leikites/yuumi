@@ -1,30 +1,46 @@
 <svg width="1024" height="1024" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
   <title id="title">YUUMI Studio U Logo</title>
-  <desc id="desc">A minimalist cream geometric U lettermark on black.</desc>
-  <rect width="1024" height="1024" fill="#000000" />
-  <path fill="#F4F4F2" fill-rule="evenodd" d="
-    M 226 210
-    Q 226 190 246 190
-    L 430 190
-    Q 450 190 450 210
-    L 450 548
-    C 450 610 500 660 562 660
-    C 624 660 674 610 674 548
-    L 674 210
-    Q 674 190 694 190
-    L 878 190
-    Q 898 190 898 210
-    L 898 640
-    C 898 790 776 912 626 912
-    L 246 912
-    Q 226 912 226 892
-    Z
+  <desc id="desc">A bold black U lettermark on a light background with YUUMI STUDIO text.</desc>
+  <rect width="1024" height="1024" fill="#F4F4F2" />
+  <path
+    fill="#000000"
+    fill-rule="evenodd"
+    d="
+      M 226 210
+      Q 226 190 246 190
+      L 430 190
+      Q 450 190 450 210
+      L 450 548
+      C 450 610 500 660 562 660
+      C 624 660 674 610 674 548
+      L 674 210
+      Q 674 190 694 190
+      L 878 190
+      Q 898 190 898 210
+      L 898 640
+      C 898 790 776 912 626 912
+      L 246 912
+      Q 226 912 226 892
+      Z
 
-    M 520 190
-    L 604 190
-    L 604 546
-    C 604 570 585 590 562 590
-    C 539 590 520 570 520 546
-    Z
-  "/>
+      M 520 190
+      L 604 190
+      L 604 546
+      C 604 570 585 590 562 590
+      C 539 590 520 570 520 546
+      Z
+    "
+  />
+  <text
+    x="286"
+    y="286"
+    fill="#FFFFFF"
+    font-family="Arial, Helvetica, sans-serif"
+    font-size="40"
+    font-weight="800"
+    letter-spacing="1.2"
+  >
+    <tspan x="286" dy="0">YUUMI</tspan>
+    <tspan x="286" dy="44">STUDIO</tspan>
+  </text>
 </svg>
