@@ -1,17 +1,30 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64" fill="none">
-  <defs>
-    <linearGradient id="bg" x1="8" y1="4" x2="56" y2="60" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#0B0B0C" />
-      <stop offset="1" stop-color="#070707" />
-    </linearGradient>
-  </defs>
-  <rect x="4" y="4" width="56" height="56" rx="14" fill="url(#bg)" />
-  <path
-    d="M22 20L32 32L42 20M32 32V46"
-    stroke="#FFFFFF"
-    stroke-width="6"
-    stroke-linecap="round"
-    stroke-linejoin="round"
-  />
-  <circle cx="46" cy="46" r="6" fill="#FFB2BE" />
+<svg width="1024" height="1024" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">YUUMI Studio U Logo</title>
+  <desc id="desc">A minimalist cream geometric U lettermark on black.</desc>
+  <rect width="1024" height="1024" fill="#000000" />
+  <path fill="#F4F4F2" fill-rule="evenodd" d="
+    M 226 210
+    Q 226 190 246 190
+    L 430 190
+    Q 450 190 450 210
+    L 450 548
+    C 450 610 500 660 562 660
+    C 624 660 674 610 674 548
+    L 674 210
+    Q 674 190 694 190
+    L 878 190
+    Q 898 190 898 210
+    L 898 640
+    C 898 790 776 912 626 912
+    L 246 912
+    Q 226 912 226 892
+    Z
+
+    M 520 190
+    L 604 190
+    L 604 546
+    C 604 570 585 590 562 590
+    C 539 590 520 570 520 546
+    Z
+  "/>
 </svg>
